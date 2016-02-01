@@ -1,0 +1,64 @@
+Open up page for first time
+	Join first time
+		Enter node number
+		Select group
+	Re join after disconnect
+		Re join the session already in progress base on token (hidden to the user)
+	Join after session started
+		Show message that session already in progress
+Game starts 
+	User recivers task
+		Task update 
+
+	User recive message
+		Add it to the message list
+			format : From # to #
+				Update the user of new messages 
+				Sound (can be )
+				Update title / status 
+				new message high lighted
+
+	User send message
+		Select who to send to.
+
+	user deleted message
+		Remove selected messages from list 
+
+	User split message
+		Open windows to specify split before send it of.
+			Show where split will happen, by use of read line 
+			user is able to edit message before send
+			user can cancel message 
+
+	User combine message
+		User selects message to combine
+			Will open up combing windows (already select, possible to add)
+
+	User encrype message
+		Update message in send bar with encryption
+			Ask user for key (if need)
+
+	User decrypes message
+		
+
+	User add checksum
+
+	user verify checksum
+
+	user add random number
+
+	user move message up
+
+	user move message down
+
+	User send too long message
+
+	User add message to list
+
+
+
+awk:1/3:fpiajgioaejgoisegåouahegåouaheguåhaåguha:s12:r15:checksum
+awk:2/3:egåufhaerugåhawråiughaeåiughaeuihguaå9e:s12:r15:checksum
+awk:3/3:hgfå9GFIYAWGAGAGAEGAEGAERGAEGAEGRAEGRGGG:s12:r15:checksum
+
+fpiajgioaejgoisegåouahegåouaheguåhaåguhaegåufhaerugåhawråiughaeåiughaeuihguaå9ehgfå9GFIYAWGAGAGAEGAEGAERGAEGAEGRAEGRGGG
