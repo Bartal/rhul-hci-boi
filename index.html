@@ -12,20 +12,47 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap-theme.min.css"
           integrity="sha384-fLW2N01lMqjakBkx3l/M9EahuwpSfeNvV63J5ezn3uZzapT0u7EYsXMjQV+0En5r" crossorigin="anonymous">
 
-    <script src="https://code.jquery.com/jquery-2.2.0.min.js"></script>
+    <!-- Include the jQuery library -->
+    <script src="http://code.jquery.com/jquery-1.11.3.min.js"></script>
+    <!-- Include the jQuery Mobile library -->
+    <script src="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js"></script>
     <!-- Latest compiled and minified JavaScript -->
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"
             integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS"
             crossorigin="anonymous"></script>
 
     <link rel="stylesheet" href="Style/bootstrap-3-vert-offset-shim.css">
+
+    <script src="/Script/wheelnav/wheelnav.min.js"></script>
     <script>
         $(document).ready(function(){
             $('.list-group-item').click(function(){
                 $(this).toggleClass('active');
             });
+
+
+            // On click, move center of div to mouse possion,
+            // and toggle visibility of wheel,
+
+            // wheel is visibal, if click outside wheel hide, or action selected on wheel, hide
+
+            // do_split -> open new windows to prefome spit
+
+
+            // hitting enter with in message bar send message if possible
+            //
         });
     </script>
+
+
+
+    <style>
+        .wheel{
+            z-index: 2000;
+
+        }
+
+    </style>
 </head>
 <body>
 <div class="container">
@@ -35,7 +62,6 @@
         </div>
         <div class="row">
             <div class="list-group" style="max-height: 80vh; overflow-y:scroll;">
-
                 <a href="#" class="list-group-item">Cras justo odio</a>
                 <a href="#" class="list-group-item">Dapibus ac facilisis in</a>
                 <a href="#" class="list-group-item">Morbi leo risus</a>
