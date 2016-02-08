@@ -39,7 +39,7 @@ Game starts
 			Ask user for key (if need)
 
 	User decrypes message
-		
+		User select message and it will add a new message to the list	
 
 	User add checksum
 
@@ -51,9 +51,16 @@ Game starts
 
 	user move message down
 
+	user type message
+		update the amount of charetes left,
+
 	User send too long message
+		Change input to red, and say user has to split message
 
 	User add message to list
+
+	User right click / hold down mesaage
+		Open up menu option for message
 
 
 
