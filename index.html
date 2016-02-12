@@ -21,20 +21,54 @@
             integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS"
             crossorigin="anonymous"></script>
 
+
+
     <link rel="stylesheet" href="Style/bootstrap-3-vert-offset-shim.css">
 
-    <script src="/Script/wheelnav/wheelnav.min.js"></script>
+    <script src="Script/wheelnav/wheelnav.min.js"></script>
+    <script src="Script/wheelnav/raphael.icons.min.js"></script>
+    <script src="Script/wheelnav/raphael.min.js"></script>
+
     <script>
         $(document).ready(function(){
+            renderWheel();
             $('.list-group-item').click(function(){
                 $(this).toggleClass('active');
             });
+            $('#wheelDiv').hide();
+
+            $('body').mousedown(function(event) {
+                switch (event.which) {
+                    case 3:
+                        // get moues possion, set possion to new possion
+                        // set visiblilty to true
+                        console.log(event.clientX, event.clientY);
+                        $('#wheelDiv').css({
+                            position: "absolute",
+                            marginLeft: 0, marginTop: 0,
+                            top: event.clientY - 130, left: event.clientX - 130
+                        });
+                        $('#wheelDiv').fadeIn('slow');
+                        break;
+                    case 1:
+                        $('#wheelDiv').fadeOut('fast');
+                    default:
+                }
+            });
 
 
-            // On click, move center of div to mouse possion,
-            // and toggle visibility of wheel,
+            function renderWheel() {
+                var wheel = new wheelnav("wheelDiv");
+                wheel.slicePathFunction = slicePath().DonutSlice;
+                wheel.createWheel(["Encryption", "Delete", "Checksum", "Modify"]);
+                wheel.titleAttr = { fill: "#111" };
+                wheel.titleSelectedAttr = { fill: "#FFF" };
+                wheel.titleHoverAttr = { fill: "#FFF" };
+                wheel.clockwise = false;
+                wheel.clickModeRotate = false;
+                wheel.refreshWheel();
+            };
 
-            // wheel is visibal, if click outside wheel hide, or action selected on wheel, hide
 
             // do_split -> open new windows to prefome spit
 
@@ -47,17 +81,14 @@
 
 
     <style>
-        .wheel{
-            z-index: 2000;
 
-        }
 
     </style>
 </head>
-<body>
+<body oncontextmenu="return false;">
 <div class="container">
     <div class="col-xs-12">
-        <div class="row text-center text-capitalize h3">
+        <div class="row text-center text-capitalize h3" style="font-family: Century Gothic, sans-serif; font-weight:bold;">
             Build you own internet
         </div>
         <div class="row">
@@ -104,5 +135,7 @@
         </div>
     </div>
 </div>
+
+<div id="wheelDiv" style="height:260px; width:260px;z-index: 100000;  position: absolute; "></div>
 </body>
 </html>
