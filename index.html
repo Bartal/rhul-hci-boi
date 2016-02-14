@@ -51,6 +51,9 @@
 
 
     <style>
+        #spiltMessageTextEditor {
+            word-break:break-all;
+        }
 
         [class|=wheelnav-divWheel-slice-basic] {
             fill: #1572b6;
@@ -231,11 +234,11 @@
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
                         aria-hidden="true">&times;</span></button>
                 <h4 class="modal-title" id="splitSystemModalLabel">Split menu</h4><br>
-                <div>The messamge will be send to the resipitent in the the order of new line that accrue</div>
+                <div>The message will be split on the red line in the messagers</div>
             </div>
             <div class="modal-body">
                 <div class="row">
-                    <div id="spiltMessageTextEditor" class="editable">
+                    <div id="spiltMessageTextEditor" class="editable" style="height:300px; max-width: 100%; word-wrap: break-word;overflow-x: hidden;">
                         testing :D
                     </div>
                 </div>
@@ -243,7 +246,7 @@
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                <button type="button" class="btn btn-primary">Save changes</button>
+                <button type="button" class="btn btn-primary">Sent split message</button>
             </div>
         </div><!-- /.modal-content -->
     </div><!-- /.modal-dialog -->

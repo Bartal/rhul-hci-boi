@@ -1,4 +1,4 @@
-var charSplit = "<b class='charSplit'>|</b>";
+var charSplit = "<b class='charSplit' style='color:red'>|</b>";
 var maxCharLenght = 60;
 var wheel;
 
@@ -27,6 +27,10 @@ function addCallbackFunction() {
     wheel.navItems[1].navigateFunction = function () {
     };
 
+    wheel.navItems[4].navigateFunction = openJoinMessage;
+
+    wheel.navItems[5].navigateFunction = openSplitMessage;
+
 }
 
 
@@ -44,9 +48,23 @@ function createSortableListsOnJoin() {
 }
 
 
+function openJoinMessage(){
+
+
+    $('#joinModal').modal('toggle');
+}
+
 function openSplitMessage() {
     var input = $('#messageInput').val();
-    $('#spiltMessageTextEditor').html(input);
+
+    $('#spiltMessageTextEditor').html("");
+    var chars = input.split("");
+    for (var i = 0; i < chars.length; ++i) {
+        var object = "<span>" + chars[i] + "</span>";
+        $('#spiltMessageTextEditor').append(object);
+    }
+    updateSplitMessage();
+
     $('#splitModal').modal('toggle');
 }
 
@@ -104,6 +122,22 @@ function inputKeybordHandler(evnet) {
 }
 
 function addMessageToMessageList(message) {
+    if (message.length == 0 || message.length > maxCharLenght) {
+        return;
+    }
     var htmlMessage = '<li href="#" class="list-group-item">' + message + '</li>';
     $('#messageBord').append(htmlMessage);
+}
+
+function updateSplitMessage() {
+    $('#spiltMessageTextEditor').remove('.charSplit');
+    var childEleemtns = $("#spiltMessageTextEditor").text().split("");
+    for (var i = 0; i < childEleemtns.length; ++i) {
+        if (i != 0 && (i % maxCharLenght) == 0) {
+            $('#spiltMessageTextEditor').append(charSplit);
+            console.log("I am trying to split an message")
+        }
+        var object = "<span>" + childEleemtns[i] + "</span>";
+        $('#spiltMessageTextEditor').append(object);
+    }
 }
