@@ -144,8 +144,11 @@ function addMessageToMessageList(message) {
 }
 
 function updateSplitMessage() {
-    $('#spiltMessageTextEditor').remove('.charSplit');
+    $('#spiltMessageTextEditor').children('.charSplit').each(function(){
+        $(this).remove();
+    });
     var childEleemtns = $("#spiltMessageTextEditor").text().split("");
+    $("#spiltMessageTextEditor").empty();
     for (var i = 0; i < childEleemtns.length; ++i) {
         if (i != 0 && (i % maxCharLenght) == 0) {
             $('#spiltMessageTextEditor').append(charSplit);
