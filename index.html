@@ -52,7 +52,21 @@
 
     <style>
 
+        [class|=wheelnav-divWheel-slice-basic] {
+            fill: #1572b6;
+            stroke: none;
+        }
 
+        [class|=wheelnav-divWheel-slice-hover] {
+            fill: #33a9dc;
+            stroke: none;
+            cursor: pointer;
+        }
+
+        [class|=wheelnav-divWheel-slice-selected] {
+            fill: #33a9dc;
+            stroke: none;
+        }
     </style>
 </head>
 <body oncontextmenu="return false;">
@@ -216,7 +230,8 @@
             <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
                         aria-hidden="true">&times;</span></button>
-                <h4 class="modal-title" id="splitSystemModalLabel">Join menu</h4>
+                <h4 class="modal-title" id="splitSystemModalLabel">Split menu</h4><br>
+                <div>The messamge will be send to the resipitent in the the order of new line that accrue</div>
             </div>
             <div class="modal-body">
                 <div class="row">

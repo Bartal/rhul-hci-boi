@@ -1,17 +1,32 @@
 var charSplit = "<b class='charSplit'>|</b>";
 var maxCharLenght = 60;
+var wheel;
 
 
 function renderWheel() {
-    var wheel = new wheelnav("wheelDiv");
+    wheel = new wheelnav("wheelDiv");
+    wheel.cssMode = true;
     wheel.slicePathFunction = slicePath().DonutSlice;
-    wheel.createWheel(["Encryption", "Delete", "Checksum", "Modify"]);
+    wheel.createWheel(["Encryption", "Delete", "Checksum", "Modify", "Join", "Split", "Add random number", "Decrypt"]);
+
     wheel.titleAttr = {fill: "#111"};
-    wheel.titleSelectedAttr = {fill: "#FFF"};
-    wheel.titleHoverAttr = {fill: "#FFF"};
+    wheel.titleSelectedAttr = {fill: "#000"};
+    wheel.titleHoverAttr = {fill: "#000"};
+
     wheel.clockwise = false;
     wheel.clickModeRotate = false;
     wheel.refreshWheel();
+
+}
+
+function addCallbackFunction() {
+    // Add in encrypyion callback
+    wheel.navItems[0].navigateFunction = function () {
+    };
+    // Add in Delete call back
+    wheel.navItems[1].navigateFunction = function () {
+    };
+
 }
 
 
@@ -59,6 +74,7 @@ function bodyMouseHandler(event) {
                 top: event.clientY - 130, left: event.clientX - 130
             });
             $('#wheelDiv').fadeIn('slow');
+            wheel.refreshWheel();
             break;
         case 1:
             $('#wheelDiv').fadeOut('fast');
@@ -70,6 +86,9 @@ function inputKeybordHandler(evnet) {
     var content = $(this).val();
     var maxChar = maxCharLenght;
     var charLable = "";
+
+    $("#sendMessage").removeClass('send');
+    $("#sendMessage").removeClass('split');
 
     if (content.length <= maxChar) {
         charLable = "You have " + (maxChar - content.length) + " left";
