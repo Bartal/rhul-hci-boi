@@ -43,8 +43,10 @@
             });
             createSortableListsOnJoin();
             $('#sendMessage').click(sendMessageButtonHandler);
+            $("#joinMessage").click(openJoinMessage);
             $('body').mousedown(bodyMouseHandler);
             $('#messageInput').keyup(inputKeybordHandler);
+            addCallbackFunction();
         });
 
     </script>
@@ -52,7 +54,7 @@
 
     <style>
         #spiltMessageTextEditor {
-            word-break:break-all;
+            word-break: break-all;
         }
 
         [class|=wheelnav-divWheel-slice-basic] {
@@ -127,6 +129,9 @@
         <div class="row">
             <label for="messageInput" id="messageLabel">You have 60 char left</label>
         </div>
+        <div class="row">
+            <button class="btn btn-default" id="joinMessage" type="button">Join message!</button>
+        </div>
     </div>
 </div>
 
@@ -152,44 +157,6 @@
                             Joining to getter
                         </div>
                         <ul class="list-group " id="toJoin" style="max-height: 40vh; overflow-y:scroll;">
-                            <li href="#" class="list-group-item">Cras justo odio</li>
-                            <li href="#" class="list-group-item">Dapibus ac facilisis in</li>
-                            <li href="#" class="list-group-item">Morbi leo risus</li>
-                            <li href="#" class="list-group-item">Porta ac consectetur ac</li>
-                            <li href="#" class="list-group-item">Vestibulum at eros</li>
-                            <li href="#" class="list-group-item">Cras justo odio</li>
-                            <li href="#" class="list-group-item">Dapibus ac facilisis in</li>
-                            <li href="#" class="list-group-item">Morbi leo risus</li>
-                            <li href="#" class="list-group-item">Porta ac consectetur ac</li>
-                            <li href="#" class="list-group-item">Vestibulum at eros</li>
-                            <li href="#" class="list-group-item">Cras justo odio</li>
-                            <li href="#" class="list-group-item">Dapibus ac facilisis in</li>
-                            <li href="#" class="list-group-item">Morbi leo risus</li>
-                            <li href="#" class="list-group-item">Porta ac consectetur ac</li>
-                            <li href="#" class="list-group-item">Vestibulum at eros</li>
-                            <li href="#" class="list-group-item">Cras justo odio</li>
-                            <li href="#" class="list-group-item">Dapibus ac facilisis in</li>
-                            <li href="#" class="list-group-item">Vestibulum at eros</li>
-                            <li href="#" class="list-group-item">Cras justo odio</li>
-                            <li href="#" class="list-group-item">Dapibus ac facilisis in</li>
-                            <li href="#" class="list-group-item">Vestibulum at eros</li>
-                            <li href="#" class="list-group-item">Cras justo odio</li>
-                            <li href="#" class="list-group-item">Dapibus ac facilisis in</li>
-                            <li href="#" class="list-group-item">Vestibulum at eros</li>
-                            <li href="#" class="list-group-item">Cras justo odio</li>
-                            <li href="#" class="list-group-item">Dapibus ac facilisis in</li>
-                            <li href="#" class="list-group-item">Vestibulum at eros</li>
-                            <li href="#" class="list-group-item">Cras justo odio</li>
-                            <li href="#" class="list-group-item">Dapibus ac facilisis in</li>
-                            <li href="#" class="list-group-item">Vestibulum at eros</li>
-                            <li href="#" class="list-group-item">Cras justo odio</li>
-                            <li href="#" class="list-group-item">Dapibus ac facilisis in</li>
-                            <li href="#" class="list-group-item">Vestibulum at eros</li>
-                            <li href="#" class="list-group-item">Cras justo odio</li>
-                            <li href="#" class="list-group-item">Dapibus ac facilisis in</li>
-                            <li href="#" class="list-group-item">Vestibulum at eros</li>
-                            <li href="#" class="list-group-item">Cras justo odio</li>
-                            <li href="#" class="list-group-item">Dapibus ac facilisis in</li>
                         </ul>
                     </div>
                     <div class="col-sm-6">
@@ -197,23 +164,7 @@
                             Avalibalbe to join
                         </div>
                         <ul class="list-group" id="avalibleToJoin" style="max-height: 40vh; overflow-y:scroll;">
-                            <li href="#" class="list-group-item">Cras justo odio</li>
-                            <li href="#" class="list-group-item">Dapibus ac facilisis in</li>
-                            <li href="#" class="list-group-item">Morbi leo risus</li>
-                            <li href="#" class="list-group-item">Porta ac consectetur ac</li>
-                            <li href="#" class="list-group-item">Vestibulum at eros</li>
-                            <li href="#" class="list-group-item">Cras justo odio</li>
-                            <li href="#" class="list-group-item">Dapibus ac facilisis in</li>
-                            <li href="#" class="list-group-item">Morbi leo risus</li>
-                            <li href="#" class="list-group-item">Porta ac consectetur ac</li>
-                            <li href="#" class="list-group-item">Vestibulum at eros</li>
-                            <li href="#" class="list-group-item">Cras justo odio</li>
-                            <li href="#" class="list-group-item">Dapibus ac facilisis in</li>
-                            <li href="#" class="list-group-item">Morbi leo risus</li>
-                            <li href="#" class="list-group-item">Porta ac consectetur ac</li>
-                            <li href="#" class="list-group-item">Vestibulum at eros</li>
-                            <li href="#" class="list-group-item">Cras justo odio</li>
-                            <li href="#" class="list-group-item">Dapibus ac facilisis in</li>
+
                         </ul>
                     </div>
                 </div>
@@ -238,7 +189,8 @@
             </div>
             <div class="modal-body">
                 <div class="row">
-                    <div id="spiltMessageTextEditor" class="editable" style="height:300px; max-width: 100%; word-wrap: break-word;overflow-x: hidden;">
+                    <div id="spiltMessageTextEditor" class="editable"
+                         style="height:300px; max-width: 100%; word-wrap: break-word;overflow-x: hidden;">
                         testing :D
                     </div>
                 </div>
@@ -246,7 +198,7 @@
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                <button type="button" class="btn btn-primary">Sent split message</button>
+                <button type="button" class="btn btn-primary">Send messages</button>
             </div>
         </div><!-- /.modal-content -->
     </div><!-- /.modal-dialog -->

@@ -36,20 +36,32 @@ function addCallbackFunction() {
 
 function createSortableListsOnJoin() {
     $("#toJoin").sortable({
-        connectWith: "ul"
+        connectWith: "ul",
+        dropOnEmpty: true
     });
 
     $("#avalibleToJoin").sortable({
         connectWith: "ul",
-        dropOnEmpty: false
+        dropOnEmpty: true
     });
 
     $("#toJoin, #avalibleToJoin").disableSelection();
 }
 
 
-function openJoinMessage(){
+function openJoinMessage() {
+    $('#toJoin').empty();
+    $('#avalibleToJoin').empty();
 
+    $('#messageBord').children('li').each(function(){
+        if($(this).hasClass('active')){
+            $(this).removeClass('active');
+            $('#toJoin').append($(this).clone());
+
+        }else{
+            $('#avalibleToJoin').append($(this).clone());
+        }
+    });
 
     $('#joinModal').modal('toggle');
 }
@@ -72,8 +84,9 @@ function sendMessageButtonHandler() {
     console.log("testing");
     if ($(this).hasClass('send')) {
         var input = $('#messageInput').val();
-        $('#messageInput').val('');
-        addMessageToMessageList(input);
+        if(addMessageToMessageList(input)){
+            $('#messageInput').val('');
+        }
     } else {
         openSplitMessage();
     }
@@ -123,10 +136,11 @@ function inputKeybordHandler(evnet) {
 
 function addMessageToMessageList(message) {
     if (message.length == 0 || message.length > maxCharLenght) {
-        return;
+        return false;
     }
     var htmlMessage = '<li href="#" class="list-group-item">' + message + '</li>';
     $('#messageBord').append(htmlMessage);
+    return true;
 }
 
 function updateSplitMessage() {
