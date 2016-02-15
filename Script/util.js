@@ -5,7 +5,7 @@ var wheel;
 
 function renderWheel() {
     wheel = new wheelnav("wheelDiv");
-    wheel.cssMode = true;
+    //wheel.cssMode = true;
     wheel.slicePathFunction = slicePath().DonutSlice;
     wheel.createWheel(["Encryption", "Delete", "Checksum", "Modify", "Join", "Split", "Add random number", "Decrypt"]);
 
@@ -15,6 +15,7 @@ function renderWheel() {
 
     wheel.clockwise = false;
     wheel.clickModeRotate = false;
+    addCallbackFunction()
     wheel.refreshWheel();
 
 }
@@ -46,6 +47,14 @@ function createSortableListsOnJoin() {
     });
 
     $("#toJoin, #avalibleToJoin").disableSelection();
+
+    $('#toJoin').on('click', '.list-group-item', function () {
+        $('#avalibleToJoin').append(this);
+    });
+
+    $('#avalibleToJoin').on('click', '.list-group-item', function () {
+        $('#toJoin').append(this);
+    });
 }
 
 
@@ -53,12 +62,12 @@ function openJoinMessage() {
     $('#toJoin').empty();
     $('#avalibleToJoin').empty();
 
-    $('#messageBord').children('li').each(function(){
-        if($(this).hasClass('active')){
+    $('#messageBord').children('li').each(function () {
+        if ($(this).hasClass('active')) {
             $(this).removeClass('active');
             $('#toJoin').append($(this).clone());
 
-        }else{
+        } else {
             $('#avalibleToJoin').append($(this).clone());
         }
     });
@@ -84,7 +93,7 @@ function sendMessageButtonHandler() {
     console.log("testing");
     if ($(this).hasClass('send')) {
         var input = $('#messageInput').val();
-        if(addMessageToMessageList(input)){
+        if (addMessageToMessageList(input)) {
             $('#messageInput').val('');
         }
     } else {
@@ -104,11 +113,13 @@ function bodyMouseHandler(event) {
                 marginLeft: 0, marginTop: 0,
                 top: event.clientY - 130, left: event.clientX - 130
             });
-            $('#wheelDiv').fadeIn('slow');
+//            $('#wheelDiv').fadeIn('slow');
+            $('#wheelDiv').show();
             wheel.refreshWheel();
             break;
         case 1:
-            $('#wheelDiv').fadeOut('fast');
+            $('#wheelDiv').hide();
+        //$('#wheelDiv').fadeOut('fast');
         default:
     }
 }
@@ -144,7 +155,7 @@ function addMessageToMessageList(message) {
 }
 
 function updateSplitMessage() {
-    $('#spiltMessageTextEditor').children('.charSplit').each(function(){
+    $('#spiltMessageTextEditor').children('.charSplit').each(function () {
         $(this).remove();
     });
     var childEleemtns = $("#spiltMessageTextEditor").text().split("");

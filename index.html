@@ -6,8 +6,14 @@
     <title>Title</title>
     <link rel="stylesheet" href="//code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css">
 
+    <script src="http//code.jquery.com/jquery-1.10.2.js"></script>
+    <script src="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js"></script>
+    <script src="http//code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
+
     <link href="Style/bootstra.386-latest-v3/bootstrap/css/bootstrap.min.css" rel="stylesheet">
     <link href="Style/bootstra.386-latest-v3/bootstrap/css/bootstrap-theme.min.css" rel="stylesheet">
+    <script src="Style/bootstra.386-latest-v3/dist/js/bootstrap.min.js"></script>
+
     <!--
     <link rel="stylesheet" href="Style/bootstrap.min.css">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css"
@@ -15,16 +21,11 @@
 
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap-theme.min.css"
           integrity="sha384-fLW2N01lMqjakBkx3l/M9EahuwpSfeNvV63J5ezn3uZzapT0u7EYsXMjQV+0En5r" crossorigin="anonymous">
--->
-
-    <script src="//code.jquery.com/jquery-1.10.2.js"></script>
-    <script src="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js"></script>
-    <script src="//code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
-
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"
             integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS"
             crossorigin="anonymous"></script>
-    <script src="Style/bootstra.386-latest-v3/dist/js/bootstrap.min.js"></script>
+-->
+
     <link rel="stylesheet" href="Style/bootstrap-3-vert-offset-shim.css">
 
     <script src="Script/wheelnav/wheelnav.min.js"></script>
@@ -46,7 +47,6 @@
             $("#joinMessage").click(openJoinMessage);
             $('body').mousedown(bodyMouseHandler);
             $('#messageInput').keyup(inputKeybordHandler);
-            addCallbackFunction();
             $('#spiltMessageTextEditor').keyup(updateSplitMessage);
         });
 
@@ -59,20 +59,24 @@
             word-break: break-all;
         }
 
-        [class|=wheelnav-divWheel-slice-basic] {
-            fill: #1572b6;
-            stroke: none;
+        .input-group-btn {
+            font-size: inherit;
         }
 
-        [class|=wheelnav-divWheel-slice-hover] {
-            fill: #33a9dc;
-            stroke: none;
-            cursor: pointer;
+        .ui-loading .ui-loader {
+            display: block;
         }
 
-        [class|=wheelnav-divWheel-slice-selected] {
-            fill: #33a9dc;
-            stroke: none;
+        .ui-loader {
+            display: none;
+            position: absolute;
+            opacity: .85;
+            z-index: 100;
+            left: 50%;
+            width: 200px;
+            margin-left: -130px;
+            margin-top: -35px;
+            padding: 10px 30px;
         }
     </style>
 </head>
@@ -85,7 +89,7 @@
             Build you own internet
         </div>
         <div class="row">
-            <ul class="list-group" id="messageBord" style="max-height: 80vh; overflow-y:scroll;">
+            <ul class="list-group" id="messageBord" style="max-height: 60vh; overflow-y:scroll;">
                 <li href="#" class="list-group-item">Cras justo odio</li>
                 <li href="#" class="list-group-item">Dapibus ac facilisis in</li>
                 <li href="#" class="list-group-item">Morbi leo risus</li>
@@ -119,17 +123,31 @@
             </ul>
         </div>
         <div class="row vert-offset-top-1">
-            <div class="input-group">
+            <form class="form-horizontal">
+                <div class="form-group">
+                    <div class="col-xs-3">
+                        <select class="form-control" data-role="none">
+                            <option value="0">send to all</option>
+                            <option value="1">send to node 1</option>
+                            <option value="2">send to node 2</option>
+                        </select>
+                    </div>
+                    <div class="col-xs-7">
+                        <input type="text" id="messageInput" name="messageInput" class="form-control"
+                               placeholder="Send message ...">
+                    </div>
+                    <div class="col-xs-2">
+                        <button class="btn btn-default send form-control" id="sendMessage" type="button">send message!
+                        </button>
+                    </div>
+                </div>
+            </form>
 
-                <input type="text" id="messageInput" name="messageInput" class="form-control"
-                       placeholder="Search for...">
-      <span class="input-group-btn">
-        <button class="btn btn-default send" id="sendMessage" type="button">send message!</button>
-      </span>
-            </div>
         </div>
         <div class="row">
-            <label for="messageInput" id="messageLabel">You have 60 char left</label>
+            <div class="col-xs-offset-3 col-xs-7">
+                <label for="messageInput" id="messageLabel">You have 60 char left</label>
+            </div>
         </div>
         <div class="row">
             <button class="btn btn-default" id="joinMessage" type="button">Join message!</button>
@@ -142,7 +160,7 @@
 
 -->
 
-<div id="wheelDiv" style="height:260px; width:260px;z-index: 100000;  position: absolute; "></div>
+<div id="wheelDiv" style="height:260px; width:260px;z-index: 10000;  position: absolute; "></div>
 
 <div class="modal fade" tabindex="-1" id="joinModal" role="dialog" aria-labelledby="gridSystemModalLabel">
     <div class="modal-dialog" role="document">
@@ -154,14 +172,14 @@
             </div>
             <div class="modal-body">
                 <div class="row">
-                    <div class="col-sm-6" style="max-height: 80vh">
+                    <div class="col-lg-6">
                         <div class="text-center h3">
                             Joining to getter
                         </div>
                         <ul class="list-group " id="toJoin" style="max-height: 40vh; overflow-y:scroll;">
                         </ul>
                     </div>
-                    <div class="col-sm-6">
+                    <div class="col-lg-6">
                         <div class="text-center h3">
                             Avalibalbe to join
                         </div>
@@ -180,7 +198,7 @@
 </div><!-- /.modal -->
 
 
-<div class="modal fade" tabindex="-1" id="splitModal" role="dialog" aria-labelledby="gridSystemModalLabel">
+<div class="modal fade" tabindex="-1" id="splitModal" role="dialog" aria-labelledby="splitSystemModalLabel">
     <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="modal-header">
