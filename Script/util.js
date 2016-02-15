@@ -2,6 +2,17 @@ var charSplit = "<b class='charSplit' style='color:red'>|</b>";
 var maxCharLenght = 60;
 var wheel;
 
+String.prototype.hashCode = function () {
+    var hash = 0;
+    if (this.length == 0) return hash;
+    for (i = 0; i < this.length; i++) {
+        char = this.charCodeAt(i);
+        hash = ((hash << 5) - hash) + char;
+        hash = hash & hash; // Convert to 32bit integer
+    }
+    return hash;
+};
+
 
 function renderWheel() {
     wheel = new wheelnav("wheelDiv");
@@ -145,11 +156,15 @@ function inputKeybordHandler(evnet) {
 
 }
 
-function addMessageToMessageList(message) {
+function addMessageToMessageList(message, from) {
     if (message.length == 0 || message.length > maxCharLenght) {
         return false;
     }
-    var htmlMessage = '<li href="#" class="list-group-item">' + message + '</li>';
+    var htmlMessage = '<li href="#" class="list-group-item';
+    if (from == "self") {
+        htmlMessage += ' text-right';
+    }
+    htmlMessage += '">' + message + '</li>';
     $('#messageBord').append(htmlMessage);
     return true;
 }
@@ -168,4 +183,18 @@ function updateSplitMessage() {
         var object = "<span>" + childEleemtns[i] + "</span>";
         $('#spiltMessageTextEditor').append(object);
     }
+}
+
+
+function addRandonNumber() {
+    console.log("Adding an random number")
+    var value = $('#messageInput').val();
+    var number = Math.round((Math.random() * 100));
+    $('#messageInput').val(number + value);
+}
+
+function addHash() {
+    var value = $('#messageInput').val();
+    var hash = (value.hashCode() % 1000000);
+    $('#messageInput').val(value + ":" + hash);
 }

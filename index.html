@@ -48,6 +48,8 @@
             $('body').mousedown(bodyMouseHandler);
             $('#messageInput').keyup(inputKeybordHandler);
             $('#spiltMessageTextEditor').keyup(updateSplitMessage);
+            $('#randomNumber').click(addRandonNumber);
+            $("#addHash").click(addHash);
         });
 
 
@@ -88,6 +90,14 @@
              style="font-family: Century Gothic, sans-serif; font-weight:bold;">
             Build you own internet
         </div>
+        <div class="row vert-offset-bottom-1 vert-offset-top-1">
+            <div class="well well-lg">
+                <div class="text-center h2">
+                    This is the server messages<br>
+                    You have the task is to send an message to 12
+                </div>
+            </div>
+        </div>
         <div class="row">
             <ul class="list-group" id="messageBord" style="max-height: 60vh; overflow-y:scroll;">
                 <li href="#" class="list-group-item">Cras justo odio</li>
@@ -119,7 +129,7 @@
                 <li href="#" class="list-group-item">Dapibus ac facilisis in</li>
                 <li href="#" class="list-group-item">Morbi leo risus</li>
                 <li href="#" class="list-group-item">Porta ac consectetur ac</li>
-                <li href="#" class="list-group-item">Vestibulum at eros</li>
+                <li href="#" class="list-group-item list-group-item-info text-right">Vestibulum at eros</li>
             </ul>
         </div>
         <div class="row vert-offset-top-1">
@@ -151,6 +161,8 @@
         </div>
         <div class="row">
             <button class="btn btn-default" id="joinMessage" type="button">Join message!</button>
+            <button class="btn btn-default" id="randomNumber" type="button">Add random number!</button>
+            <button class="btn btn-default" id="addHash" type="button">Add checksum!</button>
         </div>
     </div>
 </div>
