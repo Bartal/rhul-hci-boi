@@ -108,6 +108,24 @@
             margin-top: -35px;
             padding: 10px 30px;
         }
+
+        .list-group-item {
+            border-bottom: 1px solid black;
+            padding-top: 10px;
+            padding-bottom: 10px;
+        }
+
+        .list-group-item:last-child {
+            border-bottom: none;
+        }
+
+        .list-group-item-heading {
+            font-size: 125%;
+        }
+
+        .list-group-item-text {
+            font-size: 90%;
+        }
     </style>
 </head>
 <body oncontextmenu="return false;">
@@ -136,94 +154,99 @@
             <div id="wheelDiv" style="height:700px; width:700px;z-index: 1000;  position: absolute; "></div>
         </div>
         <div class="col-xs-7 vert-offset-top-2">
-            <ul class="list-group" id="messageBord" style="max-height: 60vh; overflow-y:scroll;">
-                <li href="#" class="list-group-item"><span>FROM: 17 </span> | Lorem ipsum dolor sit amet, consectetur
-                    adipiscing volutpat.
-                </li>
-                <li href="#" class="list-group-item"><span>FROM: 17 </span> | Lorem ipsum dolor sit amet, consectetur
-                    adipiscing volutpat.
-                </li>
-                <li href="#" class="list-group-item"><span>FROM: 17 </span> | Lorem ipsum dolor sit amet, consectetur
-                    adipiscing volutpat.
-                </li>
-                <li href="#" class="list-group-item"><span>FROM: 17 </span> | Lorem ipsum dolor sit amet, consectetur
-                    adipiscing volutpat.
-                </li>
-                <li href="#" class="list-group-item"><span>FROM: 17 </span> | Lorem ipsum dolor sit amet, consectetur
-                    adipiscing volutpat.
-                </li>
-                <li href="#" class="list-group-item"><span>FROM: 17 </span> | Lorem ipsum dolor sit amet, consectetur
-                    adipiscing volutpat.
-                </li>
-                <li href="#" class="list-group-item"><span>FROM: 17 </span> | Lorem ipsum dolor sit amet, consectetur
-                    adipiscing volutpat.
-                </li>
-                <li href="#" class="list-group-item"><span>FROM: 17 </span> | Lorem ipsum dolor sit amet, consectetur
-                    adipiscing volutpat.
-                </li>
-                <li href="#" class="list-group-item"><span>FROM: 17 </span> | Lorem ipsum dolor sit amet, consectetur
-                    adipiscing volutpat.
-                </li>
-                <li href="#" class="list-group-item"><span>FROM: 17 </span> | Lorem ipsum dolor sit amet, consectetur
-                    adipiscing volutpat.
-                </li>
-                <li href="#" class="list-group-item"><span>FROM: 17 </span> | Lorem ipsum dolor sit amet, consectetur
-                    adipiscing volutpat.
-                </li>
-                <li href="#" class="list-group-item"><span>FROM: 17 </span> | Lorem ipsum dolor sit amet, consectetur
-                    adipiscing volutpat.
-                </li>
-                <li href="#" class="list-group-item"><span>FROM: 17 </span> | Lorem ipsum dolor sit amet, consectetur
-                    adipiscing volutpat.
-                </li>
-                <li href="#" class="list-group-item"><span>FROM: 17 </span> | Lorem ipsum dolor sit amet, consectetur
-                    adipiscing volutpat.
-                </li>
-                <li href="#" class="list-group-item"><span>FROM: 17 </span> | Lorem ipsum dolor sit amet, consectetur
-                    adipiscing volutpat.
-                </li>
-                <li href="#" class="list-group-item"><span>FROM: 17 </span> | Lorem ipsum dolor sit amet, consectetur
-                    adipiscing volutpat.
-                </li>
-                <li href="#" class="list-group-item"><span>FROM: 17 </span> | Lorem ipsum dolor sit amet, consectetur
-                    adipiscing volutpat.
-                </li>
-                <li href="#" class="list-group-item"><span>FROM: 17 </span> | Lorem ipsum dolor sit amet, consectetur
-                    adipiscing volutpat.
-                </li>
-                <li href="#" class="list-group-item"><span>FROM: 17 </span> | Lorem ipsum dolor sit amet, consectetur
-                    adipiscing volutpat.
-                </li>
-                <li href="#" class="list-group-item"><span>FROM: 17 </span> | Lorem ipsum dolor sit amet, consectetur
-                    adipiscing volutpat.
-                </li>
-                <li href="#" class="list-group-item"><span>FROM: 17 </span> | Lorem ipsum dolor sit amet, consectetur
-                    adipiscing volutpat.
-                </li>
-                <li href="#" class="list-group-item"><span>FROM: 17 </span> | Lorem ipsum dolor sit amet, consectetur
-                    adipiscing volutpat.
-                </li>
-                <li href="#" class="list-group-item"><span>FROM: 17 </span> | Lorem ipsum dolor sit amet, consectetur
-                    adipiscing volutpat.
-                </li>
-                <li href="#" class="list-group-item"><span>FROM: 17 </span> | Lorem ipsum dolor sit amet, consectetur
-                    adipiscing volutpat.
-                </li>
-                <li href="#" class="list-group-item"><span>FROM: 17 </span> | Lorem ipsum dolor sit amet, consectetur
-                    adipiscing volutpat.
-                </li>
-                <li href="#" class="list-group-item"><span>FROM: 17 </span> | Lorem ipsum dolor sit amet, consectetur
-                    adipiscing volutpat.
-                </li>
-                <li href="#" class="list-group-item"><span>FROM: 17 </span> | Lorem ipsum dolor sit amet, consectetur
-                    adipiscing volutpat.
-                </li>
-                <li href="#" class="list-group-item"><span>FROM: 17 </span> | Lorem ipsum dolor sit amet, consectetur
-                    adipiscing volutpat.
-                </li>
-                <li href="#" class="list-group-item list-group-item-info">Porta ac consectetur ac</li>
-                <li href="#" class="list-group-item list-group-item-info text-right">Vestibulum at eros</li>
-            </ul>
+            <div class="list-group" id="messageBord" style="max-height: 60vh; overflow-y:scroll;">
+                <a href="#" class="list-group-item">
+                    <h2 class="list-group-item-heading">Lorem ipsum dolor sit amet, consectetur
+                        adipiscing volutpat.</h2>
+                    <p class="list-group-item-text">send to 12, 13, ..., 17, 20 min ago</p>
+                </a>
+                <a href="#" class="list-group-item">
+                    <h2 class="list-group-item-heading">Lorem ipsum dolor sit amet, consectetur
+                        adipiscing volutpat.</h2>
+                    <p class="list-group-item-text">send to 12, 13, ..., 17, 20 min ago</p>
+                </a>
+                <a href="#" class="list-group-item text-right list-group-item-error">
+                    <h2 class="list-group-item-heading">Lorem ipsum dolor sit amet, consectetur
+                        adipiscing volutpat.</h2>
+                    <span class="list-group-item-text">reciverd message from 2, 20 min ago
+                    </span>
+                </a><a href="#" class="list-group-item">
+                <h2 class="list-group-item-heading">Lorem ipsum dolor sit amet, consectetur
+                    adipiscing volutpat.</h2>
+                <p class="list-group-item-text">send to 12, 13, ..., 17, 20 min ago</p>
+            </a>
+                <a href="#" class="list-group-item">
+                    <h2 class="list-group-item-heading">Lorem ipsum dolor sit amet, consectetur
+                        adipiscing volutpat.</h2>
+                    <p class="list-group-item-text">send to 12, 13, ..., 17, 20 min ago</p>
+                </a>
+                <a href="#" class="list-group-item text-right list-group-item-error">
+                    <h2 class="list-group-item-heading">Lorem ipsum dolor sit amet, consectetur
+                        adipiscing volutpat.</h2>
+                    <span class="list-group-item-text">reciverd message from 2, 20 min ago
+                    </span>
+                </a><a href="#" class="list-group-item">
+                <h2 class="list-group-item-heading">Lorem ipsum dolor sit amet, consectetur
+                    adipiscing volutpat.</h2>
+                <p class="list-group-item-text">send to 12, 13, ..., 17, 20 min ago</p>
+            </a>
+                <a href="#" class="list-group-item">
+                    <h2 class="list-group-item-heading">Lorem ipsum dolor sit amet, consectetur
+                        adipiscing volutpat.</h2>
+                    <p class="list-group-item-text">send to 12, 13, ..., 17, 20 min ago</p>
+                </a>
+                <a href="#" class="list-group-item text-right list-group-item-error">
+                    <h2 class="list-group-item-heading">Lorem ipsum dolor sit amet, consectetur
+                        adipiscing volutpat.</h2>
+                    <span class="list-group-item-text">reciverd message from 2, 20 min ago
+                    </span>
+                </a><a href="#" class="list-group-item">
+                <h2 class="list-group-item-heading">Lorem ipsum dolor sit amet, consectetur
+                    adipiscing volutpat.</h2>
+                <p class="list-group-item-text">send to 12, 13, ..., 17, 20 min ago</p>
+            </a>
+                <a href="#" class="list-group-item">
+                    <h2 class="list-group-item-heading">Lorem ipsum dolor sit amet, consectetur
+                        adipiscing volutpat.</h2>
+                    <p class="list-group-item-text">send to 12, 13, ..., 17, 20 min ago</p>
+                </a>
+                <a href="#" class="list-group-item text-right list-group-item-error">
+                    <h2 class="list-group-item-heading">Lorem ipsum dolor sit amet, consectetur
+                        adipiscing volutpat.</h2>
+                    <span class="list-group-item-text">reciverd message from 2, 20 min ago
+                    </span>
+                </a><a href="#" class="list-group-item">
+                <h2 class="list-group-item-heading">Lorem ipsum dolor sit amet, consectetur
+                    adipiscing volutpat.</h2>
+                <p class="list-group-item-text">send to 12, 13, ..., 17, 20 min ago</p>
+            </a>
+                <a href="#" class="list-group-item">
+                    <h2 class="list-group-item-heading">Lorem ipsum dolor sit amet, consectetur
+                        adipiscing volutpat.</h2>
+                    <p class="list-group-item-text">send to 12, 13, ..., 17, 20 min ago</p>
+                </a>
+                <a href="#" class="list-group-item text-right list-group-item-error">
+                    <h2 class="list-group-item-heading">Lorem ipsum dolor sit amet, consectetur
+                        adipiscing volutpat.</h2>
+                    <span class="list-group-item-text">reciverd message from 2, 20 min ago
+                    </span>
+                </a><a href="#" class="list-group-item">
+                <h2 class="list-group-item-heading">Lorem ipsum dolor sit amet, consectetur
+                    adipiscing volutpat.</h2>
+                <p class="list-group-item-text">send to 12, 13, ..., 17, 20 min ago</p>
+            </a>
+                <a href="#" class="list-group-item">
+                    <h2 class="list-group-item-heading">Lorem ipsum dolor sit amet, consectetur
+                        adipiscing volutpat.</h2>
+                    <p class="list-group-item-text">send to 12, 13, ..., 17, 20 min ago</p>
+                </a>
+                <a href="#" class="list-group-item text-right list-group-item-error">
+                    <h2 class="list-group-item-heading">Lorem ipsum dolor sit amet, consectetur
+                        adipiscing volutpat.</h2>
+                    <span class="list-group-item-text">reciverd message from 2, 20 min ago
+                    </span>
+                </a>
+            </div>
         </div>
     </div>
     <form class="form-horizontal">
@@ -259,19 +282,16 @@
                 <div class="modal-body">
                     <div class="row">
                         <div class="col-lg-6">
-                            <div class="text-center h3">
-                                Joining to getter
+                            <div class="text-center h3">Joining to getter</div>
+                            <div class="list-group " id="toJoin" style="max-height: 40vh; overflow-y:scroll;">
                             </div>
-                            <ul class="list-group " id="toJoin" style="max-height: 40vh; overflow-y:scroll;">
-                            </ul>
                         </div>
-                        <div class="col-lg-6">
-                            <div class="text-center h3">
-                                Avalibalbe to join
-                            </div>
-                            <ul class="list-group" id="avalibleToJoin" style="max-height: 40vh; overflow-y:scroll;">
 
-                            </ul>
+                        <div class="col-lg-6">
+                            <div class="text-center h3">Avalibalbe to join</div>
+                            <div class="list-group" id="avalibleToJoin" style="max-height: 40vh; overflow-y:scroll;">
+
+                            </div>
                         </div>
                     </div>
                 </div>

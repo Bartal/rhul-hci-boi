@@ -48,12 +48,12 @@ function addCallbackFunction() {
 
 function createSortableListsOnJoin() {
     $("#toJoin").sortable({
-        connectWith: "ul",
+        connectWith: "div",
         dropOnEmpty: true
     });
 
     $("#avalibleToJoin").sortable({
-        connectWith: "ul",
+        connectWith: "div",
         dropOnEmpty: true
     });
 
@@ -95,7 +95,7 @@ function openJoinMessage() {
     $('#toJoin').empty();
     $('#avalibleToJoin').empty();
 
-    $('#messageBord').children('li').each(function () {
+    $('#messageBord').children('.list-group-item').each(function () {
         if ($(this).hasClass('active')) {
             $(this).removeClass('active');
             $('#toJoin').append($(this).clone());
