@@ -4,27 +4,15 @@
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
-    <link rel="stylesheet" href="//code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css">
+    <link rel="stylesheet" href="Style/jquery-ui.css">
 
-    <script src="//code.jquery.com/jquery-1.10.2.js"></script>
-    <script src="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js"></script>
-    <script src="//code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
+    <script src="Script/jquery-1.10.2.js"></script>
+    <script src="Script/jquery.mobile-1.4.5.min.js"></script>
+    <script src="Script/jquery-ui.js"></script>
 
     <link href="Style/bootstra.386-latest-v3/bootstrap/css/bootstrap.min.css" rel="stylesheet">
     <link href="Style/bootstra.386-latest-v3/bootstrap/css/bootstrap-theme.min.css" rel="stylesheet">
     <script src="Style/bootstra.386-latest-v3/dist/js/bootstrap.min.js"></script>
-
-    <!--
-    <link rel="stylesheet" href="Style/bootstrap.min.css">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css"
-          integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
-
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap-theme.min.css"
-          integrity="sha384-fLW2N01lMqjakBkx3l/M9EahuwpSfeNvV63J5ezn3uZzapT0u7EYsXMjQV+0En5r" crossorigin="anonymous">
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"
-            integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS"
-            crossorigin="anonymous"></script>
--->
 
     <link rel="stylesheet" href="Style/bootstrap-3-vert-offset-shim.css">
 
@@ -37,7 +25,7 @@
     <script>
         $(document).ready(function () {
             renderWheel();
-            $('#wheelDiv').hide();
+            //$('#wheelDiv').hide();
             $("#spiltMessageTextEditor").attr('contenteditable', 'true');
             $('#messageBord').on('click', '.list-group-item', function () {
                 $(this).toggleClass('active');
@@ -45,7 +33,7 @@
             createSortableListsOnJoin();
             $('#sendMessage').click(sendMessageButtonHandler);
             $("#joinMessage").click(openJoinMessage);
-            $('body').mousedown(bodyMouseHandler);
+            //('body').mousedown(bodyMouseHandler);
             $('#messageInput').keyup(inputKeybordHandler);
             $('#spiltMessageTextEditor').keyup(updateSplitMessage);
             $('#randomNumber').click(addRandonNumber);
@@ -56,7 +44,47 @@
     </script>
 
 
+    <script>
+        var BYOI = {}; //api object
+        /*
+         API:
+         methods:
+         addChecksum: ()
+         addMessage: ()
+         addRandomNumber: ()
+         combineMessages: ()
+         decryptMessage: (key)
+         deleteMessages: ()
+         encryptMessage: (key)
+         moveMessagesDown: ()
+         moveMessagesUp: ()
+         sendMessage: ()
+         splitMessages: (len)
+         verifyChecksum: ()
+         properties:
+         connection
+         myName
+         myNode
+         mySession
+         */
+    </script>
+    <!-- include all the button handlers and websocket connection -->
+    <script src="js/connection.js"></script>
+    <script src="js/add.js"></script>
+    <script src="js/combination.js"></script>
+    <script src="js/encryption.js"></script>
+    <script src="js/message-handler.js"></script>
+    <script src="js/move.js"></script>
+    <script src="js/send.js"></script>
+    <!-- minimal stylesheet -->
+    <link rel="stylesheet" type="text/css" href="css/style.css">
+
+
     <style>
+        .container > .modal-dialog {
+            width: inherit;
+        }
+
         #spiltMessageTextEditor {
             word-break: break-all;
         }
@@ -84,156 +112,205 @@
 </head>
 <body oncontextmenu="return false;">
 
-<div class="container">
-    <div class="col-xs-12">
-        <div class="row text-center text-capitalize h3"
-             style="font-family: Century Gothic, sans-serif; font-weight:bold;">
-            Build you own internet
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-xs-12">
+            <div class="text-center text-capitalize h3"
+                 style="font-family: Century Gothic, sans-serif; font-weight:bold;">
+                Build you own internet
+            </div>
         </div>
-        <div class="row vert-offset-bottom-1 vert-offset-top-1">
-            <div class="well well-lg">
+    </div>
+    <div class="row">
+        <div class="col-xs-12">
+            <div class="jumbotron">
                 <div class="text-center h2">
                     This is the server messages<br>
                     You have the task is to send an message to 12
                 </div>
             </div>
         </div>
-        <div class="row">
+    </div>
+    <div class="row">
+        <div class="col-xs-5 vert-offset-top-2">
+            <div id="wheelDiv" style="height:700px; width:700px;z-index: 1000;  position: absolute; "></div>
+        </div>
+        <div class="col-xs-7 vert-offset-top-2">
             <ul class="list-group" id="messageBord" style="max-height: 60vh; overflow-y:scroll;">
-                <li href="#" class="list-group-item">Cras justo odio</li>
-                <li href="#" class="list-group-item">Dapibus ac facilisis in</li>
-                <li href="#" class="list-group-item">Morbi leo risus</li>
-                <li href="#" class="list-group-item">Porta ac consectetur ac</li>
-                <li href="#" class="list-group-item">Vestibulum at eros</li>
-                <li href="#" class="list-group-item">Cras justo odio</li>
-                <li href="#" class="list-group-item">Dapibus ac facilisis in</li>
-                <li href="#" class="list-group-item">Morbi leo risus</li>
-                <li href="#" class="list-group-item">Porta ac consectetur ac</li>
-                <li href="#" class="list-group-item">Vestibulum at eros</li>
-                <li href="#" class="list-group-item">Cras justo odio</li>
-                <li href="#" class="list-group-item">Dapibus ac facilisis in</li>
-                <li href="#" class="list-group-item">Morbi leo risus</li>
-                <li href="#" class="list-group-item">Porta ac consectetur ac</li>
-                <li href="#" class="list-group-item">Vestibulum at eros</li>
-                <li href="#" class="list-group-item">Cras justo odio</li>
-                <li href="#" class="list-group-item">Dapibus ac facilisis in</li>
-                <li href="#" class="list-group-item">Morbi leo risus</li>
-                <li href="#" class="list-group-item">Porta ac consectetur ac</li>
-                <li href="#" class="list-group-item">Vestibulum t eros</li>
-                <li href="#" class="list-group-item">Cras justo odio</li>
-                <li href="#" class="list-group-item">Dapibus ac facilisis in</li>
-                <li href="#" class="list-group-item">Morbi leo risus</li>
-                <li href="#" class="list-group-item">Porta ac consectetur ac</li>
-                <li href="#" class="list-group-item">Vestibulum at eros</li>
-                <li href="#" class="list-group-item">Cras justo odio</li>
-                <li href="#" class="list-group-item">Dapibus ac facilisis in</li>
-                <li href="#" class="list-group-item">Morbi leo risus</li>
-                <li href="#" class="list-group-item">Porta ac consectetur ac</li>
+                <li href="#" class="list-group-item"><span>FROM: 17 </span> | Lorem ipsum dolor sit amet, consectetur
+                    adipiscing volutpat.
+                </li>
+                <li href="#" class="list-group-item"><span>FROM: 17 </span> | Lorem ipsum dolor sit amet, consectetur
+                    adipiscing volutpat.
+                </li>
+                <li href="#" class="list-group-item"><span>FROM: 17 </span> | Lorem ipsum dolor sit amet, consectetur
+                    adipiscing volutpat.
+                </li>
+                <li href="#" class="list-group-item"><span>FROM: 17 </span> | Lorem ipsum dolor sit amet, consectetur
+                    adipiscing volutpat.
+                </li>
+                <li href="#" class="list-group-item"><span>FROM: 17 </span> | Lorem ipsum dolor sit amet, consectetur
+                    adipiscing volutpat.
+                </li>
+                <li href="#" class="list-group-item"><span>FROM: 17 </span> | Lorem ipsum dolor sit amet, consectetur
+                    adipiscing volutpat.
+                </li>
+                <li href="#" class="list-group-item"><span>FROM: 17 </span> | Lorem ipsum dolor sit amet, consectetur
+                    adipiscing volutpat.
+                </li>
+                <li href="#" class="list-group-item"><span>FROM: 17 </span> | Lorem ipsum dolor sit amet, consectetur
+                    adipiscing volutpat.
+                </li>
+                <li href="#" class="list-group-item"><span>FROM: 17 </span> | Lorem ipsum dolor sit amet, consectetur
+                    adipiscing volutpat.
+                </li>
+                <li href="#" class="list-group-item"><span>FROM: 17 </span> | Lorem ipsum dolor sit amet, consectetur
+                    adipiscing volutpat.
+                </li>
+                <li href="#" class="list-group-item"><span>FROM: 17 </span> | Lorem ipsum dolor sit amet, consectetur
+                    adipiscing volutpat.
+                </li>
+                <li href="#" class="list-group-item"><span>FROM: 17 </span> | Lorem ipsum dolor sit amet, consectetur
+                    adipiscing volutpat.
+                </li>
+                <li href="#" class="list-group-item"><span>FROM: 17 </span> | Lorem ipsum dolor sit amet, consectetur
+                    adipiscing volutpat.
+                </li>
+                <li href="#" class="list-group-item"><span>FROM: 17 </span> | Lorem ipsum dolor sit amet, consectetur
+                    adipiscing volutpat.
+                </li>
+                <li href="#" class="list-group-item"><span>FROM: 17 </span> | Lorem ipsum dolor sit amet, consectetur
+                    adipiscing volutpat.
+                </li>
+                <li href="#" class="list-group-item"><span>FROM: 17 </span> | Lorem ipsum dolor sit amet, consectetur
+                    adipiscing volutpat.
+                </li>
+                <li href="#" class="list-group-item"><span>FROM: 17 </span> | Lorem ipsum dolor sit amet, consectetur
+                    adipiscing volutpat.
+                </li>
+                <li href="#" class="list-group-item"><span>FROM: 17 </span> | Lorem ipsum dolor sit amet, consectetur
+                    adipiscing volutpat.
+                </li>
+                <li href="#" class="list-group-item"><span>FROM: 17 </span> | Lorem ipsum dolor sit amet, consectetur
+                    adipiscing volutpat.
+                </li>
+                <li href="#" class="list-group-item"><span>FROM: 17 </span> | Lorem ipsum dolor sit amet, consectetur
+                    adipiscing volutpat.
+                </li>
+                <li href="#" class="list-group-item"><span>FROM: 17 </span> | Lorem ipsum dolor sit amet, consectetur
+                    adipiscing volutpat.
+                </li>
+                <li href="#" class="list-group-item"><span>FROM: 17 </span> | Lorem ipsum dolor sit amet, consectetur
+                    adipiscing volutpat.
+                </li>
+                <li href="#" class="list-group-item"><span>FROM: 17 </span> | Lorem ipsum dolor sit amet, consectetur
+                    adipiscing volutpat.
+                </li>
+                <li href="#" class="list-group-item"><span>FROM: 17 </span> | Lorem ipsum dolor sit amet, consectetur
+                    adipiscing volutpat.
+                </li>
+                <li href="#" class="list-group-item"><span>FROM: 17 </span> | Lorem ipsum dolor sit amet, consectetur
+                    adipiscing volutpat.
+                </li>
+                <li href="#" class="list-group-item"><span>FROM: 17 </span> | Lorem ipsum dolor sit amet, consectetur
+                    adipiscing volutpat.
+                </li>
+                <li href="#" class="list-group-item"><span>FROM: 17 </span> | Lorem ipsum dolor sit amet, consectetur
+                    adipiscing volutpat.
+                </li>
+                <li href="#" class="list-group-item"><span>FROM: 17 </span> | Lorem ipsum dolor sit amet, consectetur
+                    adipiscing volutpat.
+                </li>
+                <li href="#" class="list-group-item list-group-item-info">Porta ac consectetur ac</li>
                 <li href="#" class="list-group-item list-group-item-info text-right">Vestibulum at eros</li>
             </ul>
         </div>
-        <div class="row vert-offset-top-1">
-            <form class="form-horizontal">
-                <div class="form-group">
-                    <div class="col-xs-3">
-                        <select class="form-control" data-role="none">
-                            <option value="0">send to all</option>
-                            <option value="1">send to node 1</option>
-                            <option value="2">send to node 2</option>
-                        </select>
-                    </div>
-                    <div class="col-xs-7">
-                        <input type="text" id="messageInput" name="messageInput" class="form-control"
-                               placeholder="Send message ...">
-                    </div>
-                    <div class="col-xs-2">
-                        <button class="btn btn-default send form-control" id="sendMessage" type="button">send message!
-                        </button>
-                    </div>
-                </div>
-            </form>
-
-        </div>
-        <div class="row">
-            <div class="col-xs-offset-3 col-xs-7">
-                <label for="messageInput" id="messageLabel">You have 60 char left</label>
+    </div>
+    <form class="form-horizontal">
+        <div class="form-group">
+            <div class="col-xs-1 col-xs-offset-5">
+                <select class="form-control" data-role="none">
+                    <option value="0">send to all</option>
+                    <option value="1">send to node 1</option>
+                    <option value="2">send to node 2</option>
+                </select>
+            </div>
+            <div class="col-xs-4">
+                <input type="text" id="messageInput" name="messageInput" class="form-control"
+                       placeholder="Send message ...">
+            </div>
+            <div class="col-xs-2">
+                <button class="btn btn-default send form-control" id="sendMessage" type="button">send message!
+                </button>
             </div>
         </div>
-        <div class="row">
-            <button class="btn btn-default" id="joinMessage" type="button">Join message!</button>
-            <button class="btn btn-default" id="randomNumber" type="button">Add random number!</button>
-            <button class="btn btn-default" id="addHash" type="button">Add checksum!</button>
-        </div>
-    </div>
+    </form>
 </div>
 
-
-<!--
-
--->
-
-<div id="wheelDiv" style="height:260px; width:260px;z-index: 10000;  position: absolute; "></div>
-
 <div class="modal fade" tabindex="-1" id="joinModal" role="dialog" aria-labelledby="gridSystemModalLabel">
-    <div class="modal-dialog" role="document">
-        <div class="modal-content">
-            <div class="modal-header">
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
-                        aria-hidden="true">&times;</span></button>
-                <h4 class="modal-title" id="gridSystemModalLabel">Join menu</h4>
-            </div>
-            <div class="modal-body">
-                <div class="row">
-                    <div class="col-lg-6">
-                        <div class="text-center h3">
-                            Joining to getter
+    <div class="container">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
+                            aria-hidden="true">&times;</span></button>
+                    <h4 class="modal-title" id="gridSystemModalLabel">Join menu</h4>
+                </div>
+                <div class="modal-body">
+                    <div class="row">
+                        <div class="col-lg-6">
+                            <div class="text-center h3">
+                                Joining to getter
+                            </div>
+                            <ul class="list-group " id="toJoin" style="max-height: 40vh; overflow-y:scroll;">
+                            </ul>
                         </div>
-                        <ul class="list-group " id="toJoin" style="max-height: 40vh; overflow-y:scroll;">
-                        </ul>
-                    </div>
-                    <div class="col-lg-6">
-                        <div class="text-center h3">
-                            Avalibalbe to join
-                        </div>
-                        <ul class="list-group" id="avalibleToJoin" style="max-height: 40vh; overflow-y:scroll;">
+                        <div class="col-lg-6">
+                            <div class="text-center h3">
+                                Avalibalbe to join
+                            </div>
+                            <ul class="list-group" id="avalibleToJoin" style="max-height: 40vh; overflow-y:scroll;">
 
-                        </ul>
+                            </ul>
+                        </div>
                     </div>
                 </div>
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                <button type="button" class="btn btn-primary">Save changes</button>
-            </div>
-        </div><!-- /.modal-content -->
-    </div><!-- /.modal-dialog -->
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-primary">Save changes</button>
+                </div>
+            </div><!-- /.modal-content -->
+        </div><!-- /.modal-dialog -->
+    </div>
 </div><!-- /.modal -->
 
 
 <div class="modal fade" tabindex="-1" id="splitModal" role="dialog" aria-labelledby="splitSystemModalLabel">
-    <div class="modal-dialog" role="document">
-        <div class="modal-content">
-            <div class="modal-header">
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
-                        aria-hidden="true">&times;</span></button>
-                <h4 class="modal-title" id="splitSystemModalLabel">Split menu</h4><br>
-                <div>The message will be split on the red line in the messagers</div>
-            </div>
-            <div class="modal-body">
-                <div class="row">
-                    <div id="spiltMessageTextEditor" class="editable"
-                         style="height:300px; max-width: 100%; word-wrap: break-word;overflow-x: hidden;">
-                        testing :D
-                    </div>
+    <div class="container">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
+                            aria-hidden="true">&times;</span></button>
+                    <h4 class="modal-title" id="splitSystemModalLabel">Split menu</h4><br>
+                    <div>The message will be split on the red line in the messagers</div>
                 </div>
-                <input type="hidden" name="messageSplitSend"/>
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                <button type="button" class="btn btn-primary">Send messages</button>
-            </div>
-        </div><!-- /.modal-content -->
-    </div><!-- /.modal-dialog -->
+                <div class="modal-body">
+                    <div class="row">
+                        <div id="spiltMessageTextEditor" class="editable"
+                             style="height:300px; max-width: 100%; word-wrap: break-word;overflow-x: hidden;">
+                            testing :D
+                        </div>
+                    </div>
+                    <input type="hidden" name="messageSplitSend"/>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-primary">Send messages</button>
+                </div>
+            </div><!-- /.modal-content -->
+        </div><!-- /.modal-dialog -->
+    </div>
 </div><!-- /.modal -->
 
 

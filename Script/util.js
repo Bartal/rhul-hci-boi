@@ -58,14 +58,36 @@ function createSortableListsOnJoin() {
     });
 
     $("#toJoin, #avalibleToJoin").disableSelection();
+    var toJoinDarg = false;
+    $('#toJoin').on('mouseup', '.list-group-item', function () {
+        var wasDrag = toJoinDarg;
+        toJoinDarg = false;
+        if (!wasDrag) {
+            $('#avalibleToJoin').append(this);
+        }
 
-    $('#toJoin').on('click', '.list-group-item', function () {
-        $('#avalibleToJoin').append(this);
+    }).on('mousedown', '.list-group-item', function () {
+        toJoinDarg = false;
+    }).on('mousemove', '.list-group-item', function () {
+        toJoinDarg = true;
     });
 
-    $('#avalibleToJoin').on('click', '.list-group-item', function () {
-        $('#toJoin').append(this);
+
+    var avalibleToJoinDarg = false;
+    $('#avalibleToJoin').on('mouseup', '.list-group-item', function () {
+        var wasDrag = avalibleToJoinDarg;
+        avalibleToJoinDarg = false;
+        if (!wasDrag) {
+            $('#toJoin').append(this);
+        }
+
+    }).on('mousedown', '.list-group-item', function () {
+        avalibleToJoinDarg = false;
+    }).on('mousemove', '.list-group-item', function () {
+        console.log("Mouse move");
+        avalibleToJoinDarg = true;
     });
+
 }
 
 
@@ -122,7 +144,7 @@ function bodyMouseHandler(event) {
             $('#wheelDiv').css({
                 position: "absolute",
                 marginLeft: 0, marginTop: 0,
-                top: event.clientY - 130, left: event.clientX - 130
+                top: event.clientY - 600, left: event.clientX - 300
             });
 //            $('#wheelDiv').fadeIn('slow');
             $('#wheelDiv').show();
@@ -156,15 +178,11 @@ function inputKeybordHandler(evnet) {
 
 }
 
-function addMessageToMessageList(message, from) {
+function addMessageToMessageList(message) {
     if (message.length == 0 || message.length > maxCharLenght) {
         return false;
     }
-    var htmlMessage = '<li href="#" class="list-group-item';
-    if (from == "self") {
-        htmlMessage += ' text-right';
-    }
-    htmlMessage += '">' + message + '</li>';
+    var htmlMessage = '<li href="#" class="list-group-item">' + message + '</li>';
     $('#messageBord').append(htmlMessage);
     return true;
 }
