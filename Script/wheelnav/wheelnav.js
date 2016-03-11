@@ -142,7 +142,7 @@ wheelnav = function (divId, raphael, divWidth, divHeight) {
 
     //Marker settings
     this.markerEnable = false;
-    this.markerPathFunction = markerPath().TriangleMarker;
+    this.markerPathFunction = markerPath().DropMarker;
     this.markerPathCustom = null;
 
     //Private properties
@@ -1711,7 +1711,7 @@ wheelnav.prototype.styleWheel = function () {
             this.spreaderTitleOutAttr = { fill: "#eee", stroke: "#444", cursor: 'pointer' };
         }
         if (this.markerAttr === undefined || this.markerAttr === null) {
-            this.markerAttr = { stroke: "#444", "stroke-width": 2 };
+            this.markerAttr = { stroke: "#000087", "stroke-width": 3 };
         }
     }
     else {
@@ -3780,6 +3780,6 @@ var colorpalette = {
     fractallove: new Array("#002EFF", "#00FFF7", "#00FF62", "#FFAA00", "#F5D908", "#FF0000", "#FF00F3", "#AA00FF"),
     sprinkles: new Array("#272523", "#FFACAC", "#FFD700", "#00590C", "#08006D"),
     goldenyellow: new Array("#D8B597", "#8C4006", "#B6690F", "#E3C57F", "#FFEDBE"),
-    hotaru: new Array("#1693A5","#808080")
+    hotaru: new Array("#00aaaa","#808080")
 };
     
