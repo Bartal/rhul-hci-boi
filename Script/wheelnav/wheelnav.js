@@ -111,7 +111,7 @@ wheelnav = function (divId, raphael, divWidth, divHeight) {
     this.navItemsContinuous = false; 
     this.navItemsCentered = true; // This is reasoned when this.navItemsContinuous = false;
 
-    this.colors = colorpalette.defaultpalette;
+    this.colors = colorpalette.hotaru;
     this.titleSpreadScale = null;
 
     //Spreader settings
@@ -154,7 +154,7 @@ wheelnav = function (divId, raphael, divWidth, divHeight) {
     this.sliceHoverAttr = null;
     this.sliceSelectedAttr = null;
     
-    this.titleFont = '100 24px Impact, Charcoal, sans-serif';
+    this.titleFont = '100 21px DOS, Charcoal, sans-serif';
     this.titleAttr = null;
     this.titleHoverAttr = null;
     this.titleSelectedAttr = null;
@@ -3780,5 +3780,6 @@ var colorpalette = {
     fractallove: new Array("#002EFF", "#00FFF7", "#00FF62", "#FFAA00", "#F5D908", "#FF0000", "#FF00F3", "#AA00FF"),
     sprinkles: new Array("#272523", "#FFACAC", "#FFD700", "#00590C", "#08006D"),
     goldenyellow: new Array("#D8B597", "#8C4006", "#B6690F", "#E3C57F", "#FFEDBE"),
-    hotaru: new Array("#364C4A", "#497C7F", "#92C5C0", "#858168", "#CCBCA5")
+    hotaru: new Array("#1693A5","#808080")
 };
+    

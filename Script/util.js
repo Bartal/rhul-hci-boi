@@ -17,8 +17,8 @@ String.prototype.hashCode = function () {
 function renderWheel() {
     wheel = new wheelnav("wheelDiv");
     //wheel.cssMode = true;
-    wheel.slicePathFunction = slicePath().DonutSlice;
-    wheel.createWheel(["Encryption", "Delete", "Checksum", "Modify", "Join", "Split", "Add random number", "Decrypt"]);
+    wheel.slicePathFunction = slicePath().LineSlice;
+    wheel.createWheel(["Encryption", "Delete", "Checksum", "Modify", "Join", "Add\n random number", "Decrypt"]);
 
     wheel.titleAttr = {fill: "#111"};
     wheel.titleSelectedAttr = {fill: "#000"};
