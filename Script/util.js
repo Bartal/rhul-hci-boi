@@ -19,7 +19,7 @@ function renderWheel() {
     //wheel.cssMode = true;
     wheel.slicePathFunction = slicePath().LineSlice;
     wheel.markerEnable = true;
-    wheel.createWheel(["Delete", "Checksum", "Join", "Modify", "Add\n random number", "Decrypt"]);
+    wheel.createWheel(["Delete\n Message", "Add\n Checksum", "Join\n Messages", "Modify\n Message", "Add\n Random Number", "Decrypt\n Message"]);
 
     wheel.titleAttr = {fill: "#111"};
     wheel.titleSelectedAttr = {fill: "#000"};
