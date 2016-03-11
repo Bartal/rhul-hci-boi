@@ -18,12 +18,13 @@ function renderWheel() {
     wheel = new wheelnav("wheelDiv");
     //wheel.cssMode = true;
     wheel.slicePathFunction = slicePath().LineSlice;
-    wheel.createWheel(["Encryption", "Delete", "Checksum", "Modify", "Join", "Add\n random number", "Decrypt"]);
+    wheel.markerEnable = true;
+    wheel.createWheel(["Delete\n Message", "Add\n Checksum", "Join\n Messages", "Modify\n Message", "Add\n Random Number", "Decrypt\n Message"]);
 
     wheel.titleAttr = {fill: "#111"};
     wheel.titleSelectedAttr = {fill: "#000"};
     wheel.titleHoverAttr = {fill: "#000"};
-
+    
     wheel.clockwise = false;
     wheel.clickModeRotate = false;
     addCallbackFunction()
