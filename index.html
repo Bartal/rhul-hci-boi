@@ -81,6 +81,19 @@
 
 
     <style>
+        .row {
+            display: -webkit-box;
+            display: -webkit-flex;
+            display: -ms-flexbox;
+            display: flex;
+            flex-wrap: wrap;
+        }
+
+        .row > [class*='col-'] {
+            display: flex;
+            flex-direction: column;
+        }
+
         .container > .modal-dialog {
             width: inherit;
         }
@@ -151,7 +164,13 @@
     </div>
     <div class="row">
         <div class="col-xs-5 vert-offset-top-2">
-            <div id="wheelDiv" style="height:700px; width:700px;z-index: 1000;  position: absolute; "></div>
+            <div id="wheelDiv" style="height:100%; z-index: 1000;"
+                 data-wheelnav-wheelradius="100"
+                 data-wheelnav-navangle="90"
+                 data-wheelnav-slicepath="DonutSlice"
+                 data-wheelnav-colors="#E34C26,#F06529"
+                 data-wheelnav-rotateoff>
+            </div>
         </div>
         <div class="col-xs-7 vert-offset-top-2">
             <div class="list-group" id="messageBord" style="max-height: 60vh; overflow-y:scroll;">
