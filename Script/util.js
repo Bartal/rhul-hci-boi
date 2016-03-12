@@ -16,20 +16,17 @@ String.prototype.hashCode = function () {
 
 function renderWheel() {
     wheel = new wheelnav("wheelDiv");
-    //wheel.cssMode = true;
+
     wheel.slicePathFunction = slicePath().LineSlice;
     wheel.markerEnable = true;
-    wheel.createWheel(["Delete\n Message", "Add\n Checksum", "Join\n Messages", "Modify\n Message", "Add\n Random Number", "Decrypt\n Message"]);
+    wheel.initWheel(["Delete\n Message", "Add\n Checksum", "Join\n Messages", "Modify\n Message", "Add\n Random Number", "Decrypt\n Message"]);
 
-    wheel.titleAttr = {fill: "#111"};
-    wheel.titleSelectedAttr = {fill: "#000"};
-    wheel.titleHoverAttr = {fill: "#000"};
-    
     wheel.clockwise = false;
     wheel.clickModeRotate = false;
-    addCallbackFunction()
-    wheel.refreshWheel();
+    addCallbackFunction();
 
+    wheel.createWheel();
+    $('svg').css('overflow', 'unset');
 }
 
 function addCallbackFunction() {
