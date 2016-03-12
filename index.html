@@ -20,6 +20,15 @@
     <script src="Script/wheelnav/raphael.icons.min.js"></script>
     <script src="Script/wheelnav/raphael.min.js"></script>
 
+    <!-- http://www.myersdaily.org/joseph/javascript/md5.js -->
+    <script src="Script/BYOI-webClient-v2.0/md5/md5.js"></script>
+    <!-- include BYOI jQuery plugin -->
+    <script src="Script/BYOI-webClient-v2.0/BYOI/byoi.js"></script>
+    <!-- include BYOI configuration -->
+    <script src="Script/config.js"></script>
+    <!-- include all the button handlers and websocket connection -->
+    <script src="Script/bindings.js"></script>
+
     <script src="Script/util.js"></script>
 
     <script>
@@ -116,7 +125,7 @@
             font-size: 150%;
         }
 
-        .list-group-item {
+        .list-group-item{
             border-bottom: 1px solid black;
             padding-top: 10px;
             padding-bottom: 10px;
@@ -126,9 +135,46 @@
             border-bottom: none;
         }
 
-        .list-group-item-text {
+        .list-group-item{
             font-size: 90%;
             word-break: break-all;
+        }
+
+        .list-group-item.BYOI-selected,
+        .list-group-item.BYOI-selected:hover,
+        .list-group-item.BYOI-selected:focus {
+            z-index: 2;
+            color: #ffffff;
+            background-color: #aa5500;
+            border-color: #aa5500;
+        }
+        .list-group-item.BYOI-selected .list-group-item-heading,
+        .list-group-item.BYOI-selected:hover .list-group-item-heading,
+        .list-group-item.BYOI-selected:focus .list-group-item-heading,
+        .list-group-item.BYOI-selected .list-group-item-heading > small,
+        .list-group-item.BYOI-selected:hover .list-group-item-heading > small,
+        .list-group-item.BYOI-selected:focus .list-group-item-heading > small,
+        .list-group-item.BYOI-selected .list-group-item-heading > .small,
+        .list-group-item.BYOI-selected:hover .list-group-item-heading > .small,
+        .list-group-item.BYOI-selected:focus .list-group-item-heading > .small {
+            color: inherit;
+        }
+        .list-group-item.BYOI-selected .list-group-item-text,
+        .list-group-item.BYOI-selected:hover .list-group-item-text,
+        .list-group-item.BYOI-selected:focus .list-group-item-text {
+            color: #ffffff;
+        }
+
+
+        .list-group-item.BYOI-selected,
+        .list-group-item.BYOI-selected:hover,
+        .list-group-item.BYOI-selected:focus {
+            border-color: #aa5500;
+        }
+        .list-group-item.BYOI-selected .badge,
+        .list-group-item.BYOI-selected:hover .badge,
+        .list-group-item.BYOI-selected:focus .badge {
+            text-shadow: none;
         }
     </style>
 </head>
@@ -146,7 +192,7 @@
     <div class="row">
         <div class="col-xs-12">
             <div class="jumbotron">
-                <div class="text-center h2">
+                <div class="text-center h2" id="systemMessage">
                     This is the server messages<br>
                     You have the task is to send an message to 12
                 </div>
@@ -165,26 +211,26 @@
         </div>
         <div class="col-xs-7 vert-offset-top-2">
             <div class="list-group" id="messageBord" style="max-height: 60vh; overflow-y:scroll;">
-                <a href="#" class="list-group-item">
-                    <div class="list-group-item-text">
+                <a href="#" class="list-group-item BYOI-message">
+                    <div class="list-group-item BYOI-message-text">
                         <div class="h2 text-justify">Lorem ipsum dolor sit amet, consectetur adipiscing volutpat.</div>
                         <span class="small">send to 12, 13, ..., 17, 20 min ago</span>
                     </div>
                 </a>
-                <a href="#" class="list-group-item">
-                    <div class="list-group-item-text">
+                <a href="#" class="list-group-item BYOI-message">
+                    <div class="list-group-item BYOI-message-text">
                         <div class="h2 text-justify">Lorem ipsum dolor sit amet, consectetur adipiscing volutpat.</div>
                         <span class="small">send to 12, 13, ..., 17, 20 min ago</span>
                     </div>
                 </a>
-                <a href="#" class="list-group-item">
-                    <div class="list-group-item-text">
+                <a href="#" class="list-group-item BYOI-message">
+                    <div class="list-group-item BYOI-message-text">
                         <div class="h2 text-justify">Lorem ipsum dolor sit amet, consectetur adipiscing volutpat.</div>
                         <span class="small">send to 12, 13, ..., 17, 20 min ago</span>
                     </div>
                 </a>
-                <a href="#" class="list-group-item">
-                    <div class="list-group-item-text">
+                <a href="#" class="list-group-item BYOI-message">
+                    <div class="list-group-item BYOI-message-text">
                         <div class="h3 text-justify">Lorem ipsum dolor sit amet, consectetur adipiscing volutpat.</div>
                         <span class="small">send to 12, 13, ..., 17, 20 min ago</span>
                     </div>
@@ -201,12 +247,16 @@
                     <option value="2">send to node 2</option>
                 </select>
             </div>
-            <div class="col-xs-4">
+            <div class="col-xs-2">
                 <input type="text" id="messageInput" name="messageInput" class="form-control"
                        placeholder="Send message ...">
             </div>
             <div class="col-xs-2">
-                <button class="btn btn-default send form-control" id="sendMessage" type="button">send message!
+                <button class="btn btn-default send form-control" id="sendButton" type="button">send message!
+                </button>
+            </div>
+            <div class="col-xs-2">
+                <button class="btn btn-default send form-control" id="connectButton" type="button">Connection
                 </button>
             </div>
         </div>

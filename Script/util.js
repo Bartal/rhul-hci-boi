@@ -103,7 +103,7 @@ function dragAndDropMessageList(){
         var wasDrag = toJoinDarg;
         toJoinDarg = false;
         if(!wasDrag){
-            $(this).toggleClass('active');
+            $(this).toggleClass('BYOI-selected');
         }
     }).on('mousedown', '.list-group-item', function () {
         toJoinDarg = false;
@@ -117,8 +117,8 @@ function openJoinMessage() {
     $('#avalibleToJoin').empty();
 
     $('#messageBord').children('.list-group-item').each(function () {
-        if ($(this).hasClass('active')) {
-            $(this).removeClass('active');
+        if ($(this).hasClass('BYOI-selected')) {
+            $(this).removeClass('BYOI-selected');
             $('#toJoin').append($(this).clone());
 
         } else {
@@ -144,7 +144,6 @@ function openSplitMessage() {
 }
 
 function sendMessageButtonHandler() {
-    console.log("testing");
     if ($(this).hasClass('send')) {
         var input = $('#messageInput').val();
         if (addMessageToMessageList(input)) {
