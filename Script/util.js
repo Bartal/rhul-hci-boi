@@ -89,6 +89,29 @@ function createSortableListsOnJoin() {
 }
 
 
+function dragAndDropMessageList(){
+    $("#messageBord").sortable({
+        connectWith: "div",
+        dropOnEmpty: true
+    });
+    $("#messageBord").disableSelection();
+    var toJoinDarg = false;
+
+
+
+    $('#messageBord').on('mouseup', '.list-group-item', function () {
+        var wasDrag = toJoinDarg;
+        toJoinDarg = false;
+        if(!wasDrag){
+            $(this).toggleClass('active');
+        }
+    }).on('mousedown', '.list-group-item', function () {
+        toJoinDarg = false;
+    }).on('mousemove', '.list-group-item', function () {
+        toJoinDarg = true;
+    });
+}
+
 function openJoinMessage() {
     $('#toJoin').empty();
     $('#avalibleToJoin').empty();

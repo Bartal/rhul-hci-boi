@@ -26,9 +26,11 @@
         $(document).ready(function () {
             renderWheel();
             $("#spiltMessageTextEditor").attr('contenteditable', 'true');
-            $('#messageBord').on('click', '.list-group-item', function () {
-                $(this).toggleClass('active');
-            });
+
+
+            // Add in the drag and drop
+            dragAndDropMessageList();
+
             createSortableListsOnJoin();
             $('#sendMessage').click(sendMessageButtonHandler);
             $("#joinMessage").click(openJoinMessage);
