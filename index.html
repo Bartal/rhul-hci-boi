@@ -41,7 +41,6 @@
             dragAndDropMessageList();
 
             createSortableListsOnJoin();
-            $('#sendMessage').click(sendMessageButtonHandler);
             $("#joinMessage").click(openJoinMessage);
             //('body').mousedown(bodyMouseHandler);
             $('#messageInput').keyup(inputKeybordHandler);
@@ -125,7 +124,7 @@
             font-size: 150%;
         }
 
-        .list-group-item{
+        .list-group-item {
             border-bottom: 1px solid black;
             padding-top: 10px;
             padding-bottom: 10px;
@@ -135,7 +134,7 @@
             border-bottom: none;
         }
 
-        .list-group-item{
+        .list-group-item {
             font-size: 90%;
             word-break: break-all;
         }
@@ -148,6 +147,7 @@
             background-color: #aa5500;
             border-color: #aa5500;
         }
+
         .list-group-item.BYOI-selected .list-group-item-heading,
         .list-group-item.BYOI-selected:hover .list-group-item-heading,
         .list-group-item.BYOI-selected:focus .list-group-item-heading,
@@ -159,22 +159,34 @@
         .list-group-item.BYOI-selected:focus .list-group-item-heading > .small {
             color: inherit;
         }
+
         .list-group-item.BYOI-selected .list-group-item-text,
         .list-group-item.BYOI-selected:hover .list-group-item-text,
         .list-group-item.BYOI-selected:focus .list-group-item-text {
             color: #ffffff;
         }
 
-
         .list-group-item.BYOI-selected,
         .list-group-item.BYOI-selected:hover,
         .list-group-item.BYOI-selected:focus {
             border-color: #aa5500;
         }
+
         .list-group-item.BYOI-selected .badge,
         .list-group-item.BYOI-selected:hover .badge,
         .list-group-item.BYOI-selected:focus .badge {
             text-shadow: none;
+        }
+
+        .sent,
+        .broadcast,
+        .fragment,
+        .combined,
+        .checksum,
+        .encrypted,
+        .decrypted,
+        .random{
+            color:black;
         }
     </style>
 </head>
@@ -211,30 +223,7 @@
         </div>
         <div class="col-xs-7 vert-offset-top-2">
             <div class="list-group" id="messageBord" style="max-height: 60vh; overflow-y:scroll;">
-                <a href="#" class="list-group-item BYOI-message">
-                    <div class="list-group-item BYOI-message-text">
-                        <div class="h2 text-justify">Lorem ipsum dolor sit amet, consectetur adipiscing volutpat.</div>
-                        <span class="small">send to 12, 13, ..., 17, 20 min ago</span>
-                    </div>
-                </a>
-                <a href="#" class="list-group-item BYOI-message">
-                    <div class="list-group-item BYOI-message-text">
-                        <div class="h2 text-justify">Lorem ipsum dolor sit amet, consectetur adipiscing volutpat.</div>
-                        <span class="small">send to 12, 13, ..., 17, 20 min ago</span>
-                    </div>
-                </a>
-                <a href="#" class="list-group-item BYOI-message">
-                    <div class="list-group-item BYOI-message-text">
-                        <div class="h2 text-justify">Lorem ipsum dolor sit amet, consectetur adipiscing volutpat.</div>
-                        <span class="small">send to 12, 13, ..., 17, 20 min ago</span>
-                    </div>
-                </a>
-                <a href="#" class="list-group-item BYOI-message">
-                    <div class="list-group-item BYOI-message-text">
-                        <div class="h3 text-justify">Lorem ipsum dolor sit amet, consectetur adipiscing volutpat.</div>
-                        <span class="small">send to 12, 13, ..., 17, 20 min ago</span>
-                    </div>
-                </a>
+
             </div>
         </div>
     </div>
@@ -248,7 +237,7 @@
                 </select>
             </div>
             <div class="col-xs-2">
-                <input type="text" id="messageInput" name="messageInput" class="form-control"
+                <input type="text" id="msg" name="msg" class="form-control"
                        placeholder="Send message ...">
             </div>
             <div class="col-xs-2">
@@ -259,6 +248,10 @@
                 <button class="btn btn-default send form-control" id="connectButton" type="button">Connection
                 </button>
             </div>
+        </div>
+        <div class="form-group">
+            <button type="button" class="col-xs-offset-5 btn btn-default" id="splitButton">splitButton</button>
+            <button type="button" class="btn btn-default" id="encryptButton">encryptButton</button>
         </div>
     </form>
 </div>

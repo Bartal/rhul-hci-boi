@@ -143,18 +143,6 @@ function openSplitMessage() {
     $('#splitModal').modal('toggle');
 }
 
-function sendMessageButtonHandler() {
-    if ($(this).hasClass('send')) {
-        var input = $('#messageInput').val();
-        if (addMessageToMessageList(input)) {
-            $('#messageInput').val('');
-        }
-    } else {
-        openSplitMessage();
-    }
-}
-
-
 function bodyMouseHandler(event) {
     switch (event.which) {
         case 3:
