@@ -26,7 +26,7 @@ function renderWheel() {
     addCallbackFunction();
 
     wheel.createWheel();
-    $('svg').css('overflow', 'unset');
+    $('svg').css('overflow', 'visible');
 }
 
 function addCallbackFunction() {
