@@ -47,6 +47,7 @@
             $('#spiltMessageTextEditor').keyup(updateSplitMessage);
             $('#randomNumber').click(addRandonNumber);
             $("#addHash").click(addHash);
+            $('#toggle').click(toggleEncrytionText);
 
 
             var resizeTimer;
@@ -66,14 +67,6 @@
         });
 
     </script>
-    <!-- include all the button handlers and websocket connection -->
-    <script src="js/connection.js"></script>
-    <script src="js/add.js"></script>
-    <script src="js/combination.js"></script>
-    <script src="js/encryption.js"></script>
-    <script src="js/message-handler.js"></script>
-    <script src="js/move.js"></script>
-    <script src="js/send.js"></script>
     <!-- minimal stylesheet -->
     <link rel="stylesheet" type="text/css" href="css/style.css">
 
@@ -185,8 +178,8 @@
         .checksum,
         .encrypted,
         .decrypted,
-        .random{
-            color:black;
+        .random {
+            color: black;
         }
     </style>
 </head>
@@ -251,6 +244,8 @@
         <div class="form-group">
             <button type="button" class="col-xs-offset-5 btn btn-default" id="splitButton">splitButton</button>
             <button type="button" class="btn btn-default" id="encryptButton">encryptButton</button>
+            <button class="btn btn-default" id="toggle" type="button">Toggle value
+            </button>
         </div>
     </form>
 </div>

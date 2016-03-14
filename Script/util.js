@@ -1,6 +1,7 @@
 var charSplit = "<b class='charSplit' style='color:red'>|</b>";
 var maxCharLenght = 60;
 var wheel;
+var encryptionTspan;
 
 String.prototype.hashCode = function () {
     var hash = 0;
@@ -27,6 +28,7 @@ function renderWheel() {
 
     wheel.createWheel();
     $('svg').css('overflow', 'visible');
+    encryptionTspan = $('text[id|="wheelnav-wheelDiv-title"] tspan:contains("Decrypt")');
 }
 
 function addCallbackFunction() {
@@ -40,9 +42,15 @@ function addCallbackFunction() {
     wheel.navItems[4].navigateFunction = openJoinMessage;
 
     wheel.navItems[5].navigateFunction = openSplitMessage;
-
 }
 
+function toggleEncrytionText() {
+    if ($(encryptionTspan).text() == "Encrypt") {
+        $(encryptionTspan).text('Decrypt')
+    } else {
+        $(encryptionTspan).text('Encrypt')
+    }
+}
 
 function createSortableListsOnJoin() {
     $("#toJoin").sortable({
@@ -89,7 +97,7 @@ function createSortableListsOnJoin() {
 }
 
 
-function dragAndDropMessageList(){
+function dragAndDropMessageList() {
     $("#messageBord").sortable({
         connectWith: "div",
         dropOnEmpty: true
@@ -98,11 +106,10 @@ function dragAndDropMessageList(){
     var toJoinDarg = false;
 
 
-
     $('#messageBord').on('mouseup', '.list-group-item', function () {
         var wasDrag = toJoinDarg;
         toJoinDarg = false;
-        if(!wasDrag){
+        if (!wasDrag) {
             $(this).toggleClass('BYOI-selected');
         }
     }).on('mousedown', '.list-group-item', function () {
