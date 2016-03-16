@@ -3,7 +3,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>BYOI</title>
     <link rel="stylesheet" href="Style/jquery-ui.css">
 
     <script src="Script/jquery-1.10.2.js"></script>
@@ -36,6 +36,8 @@
             renderWheel();
             $("#spiltMessageTextEditor").attr('contenteditable', 'true');
 
+            //open connection page
+            $('#connectionModal').modal('toggle');
 
             // Add in the drag and drop
             dragAndDropMessageList();
@@ -48,7 +50,8 @@
             $('#randomNumber').click(addRandonNumber);
             $("#addHash").click(addHash);
             $('#toggle').click(toggleEncrytionText);
-
+            $('#connection').click(openConnect);
+            $('#connectButton').click(openConnect);
 
             var resizeTimer;
 
@@ -223,22 +226,21 @@
     <form class="form-horizontal">
         <div class="form-group">
             <div class="col-xs-1 col-xs-offset-5">
-                <select class="form-control" data-role="none">
-                    <option value="0">send to all</option>
-                    <option value="1">send to node 1</option>
-                    <option value="2">send to node 2</option>
-                </select>
+                <div class="col-xs-1 col-xs-offset-5">
+                    <input type="number" min="0" value="0" id="recipient" class="form-control"
+                           placeholder="Node">
+                </div>
             </div>
             <div class="col-xs-2">
                 <input type="text" id="msg" name="msg" class="form-control"
                        placeholder="Send message ...">
             </div>
             <div class="col-xs-2">
-                <button class="btn btn-default send form-control" id="sendButton" type="button">send message!
+                <button class="btn btn-default send form-control" id="sendButton" type="submit">send message!
                 </button>
             </div>
             <div class="col-xs-2">
-                <button class="btn btn-default send form-control" id="connectButton" type="button">Connection
+                <button class="btn btn-default send form-control" id="connection" type="button">Connection
                 </button>
             </div>
         </div>
@@ -308,6 +310,24 @@
                 <div class="modal-footer">
                     <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
                     <button type="button" class="btn btn-primary">Send messages</button>
+                </div>
+            </div><!-- /.modal-content -->
+        </div><!-- /.modal-dialog -->
+    </div>
+</div><!-- /.modal -->
+
+<div class="modal fade" tabindex="-1" id="connectionModal" role="dialog" aria-labelledby="splitSystemModalLabel">
+    <div class="container">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
+                            aria-hidden="true">&times;</span></button>
+                    <h4 class="modal-title" id="splitSystemModalLabel">Connection</h4><br>
+                    <div></div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" id="connectButton" class="btn btn-primary" >Connect</button>
                 </div>
             </div><!-- /.modal-content -->
         </div><!-- /.modal-dialog -->
