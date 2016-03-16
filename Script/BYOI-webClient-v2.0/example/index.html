@@ -2,13 +2,17 @@
 <html>
 <head>
     <title>Just a show for the new BYOI</title>
+
     <script
-        src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"
+            src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"
     ></script>
     <link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.4/themes/smoothness/jquery-ui.css">
-    <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.4/jquery-ui.min.js"></script>    
+    <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.4/jquery-ui.min.js"></script>
 
-    
+    <link href="css/bootstra.386-latest-v3/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link href="css/bootstra.386-latest-v3/bootstrap/css/bootstrap-theme.min.css" rel="stylesheet">
+    <script src="css/bootstra.386-latest-v3/dist/js/bootstrap.min.js"></script>
+
     <!-- http://www.myersdaily.org/joseph/javascript/md5.js -->
     <script src="../md5/md5.js"></script>
     <!-- include BYOI jQuery plugin -->
@@ -18,59 +22,154 @@
     <!-- include all the button handlers and websocket connection -->
     <script src="js/bindings.js"></script>
     <!-- minimal stylesheet -->
-    <link rel="stylesheet" type="text/css" href="css/style.css">
+
+    <style>
+        .sent,
+        .broadcast,
+        .fragment,
+        .combined,
+        .checksum,
+        .encrypted,
+        .decrypted,
+        .random,
+        .received {
+            color: black;
+        }
+    </style>
+    <script>
+        $(document).ready(function () {
+            $("#systemMessages").hide();
+        });
+    </script>
 </head>
 <body>
-    <div id='container'>
-        <div id='sidebar'>
+<div id='container' class="container">
+    <div class="row">
+        <div id="main" class="col-xs-8">
+            <div class="row">
+                <div id="msgBox" class="col-xs-12">
+                    <span>Message to send</span>
+                    <input id="msg"
+                           type="text"
+                    />
+                </div><!-- #msgBox -->
+            </div>
+            <div class="row">
+                <div id="recipientBox" class="col-xs-12">
+                    <span>Recipient (Empty for Broadcast)</span>
+                    <input id="recipient"
+                           type="number"
+                    />
+                </div><!-- #recipientBox -->
+            </div>
+            <div class="row">
+                <div class="col-xs-12">
+                    <div id="task" class="jumbotron">
+                        Task her
+                    </div>
+                    <div class="alert alert-warning" id="systemMessages">
+                        <button type="button" class="close" data-dismiss="alert">x</button>
+                        <div id="systemMessage">
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-xs-12">
+                    <div class="list-group" id="messageBord" style="max-height: 60vh; overflow-y:scroll;">
+
+                    </div>
+                </div>
+            </div>
+        </div><!-- #main -->
+        <div class="col-xs-4" id='sidebar'>
             <div id="connectionButtons">
                 <button
-                    type="button"
-                    id='connectButton'
-                >Connect</button>
+                        type="button"
+                        id='connectButton'
+                >Connect
+                </button>
             </div><!-- #connectionButtons -->
             <div id="loggedInButtons">
-                <button type="button" id='closeButton'>Close</button>
-                <button type="button" id='sendButton' >Send Message</button>
-                <button type="button" id='addButton' >Add</button>
-                <button type="button" id='upButton' >Move Up</button>
-                <button type="button" id='downButton' >Move Down</button>
-                <button type="button" id='combineButton' >Combine</button>
-                <button type="button" id='splitButton' >Split</button>
-                <button type="button" id='checksumButton' >Add Checksum</button>
-                <button type="button" id='verifyButton' >Verify Checksum</button>
-                <button type="button" id='encryptButton' >Encrypt</button>
-                <button type="button" id='decryptButton' >Decrypt</button>
-                <button type="button" id='randomButton' >Add Random Number</button>
-                <button type="button" id='deleteButton' >Delete</button>
+                <div class="form-inline">
+                    <div class="form-group">
+                        <button class="col-xs-12 btn btn-default form-control" type="button" id='closeButton'>Close
+                        </button>
+                    </div>
+                    <div class="form-group">
+                        <button class="col-xs-12 btn btn-default from-control" type="button" id='sendButton'>Send
+                            Message
+                        </button>
+                    </div>
+                    <div class="form-group">
+                        <button class="col-xs-12 btn btn-default from-control" type="button" id='addButton'>Add</button>
+                    </div>
+                    <div class="form-group">
+                        <button class="col-xs-12 btn btn-default from-control" type="button" id='upButton'>Move Up
+                        </button>
+                    </div>
+                    <div class="form-group">
+                        <button class="col-xs-12 btn btn-default from-control" type="button" id='downButton'>Move Down
+                        </button>
+                    </div>
+                    <div class="form-group">
+                        <button class="col-xs-12 btn btn-default from-control" type="button" id='combineButton'>
+                            Combine
+                        </button>
+                    </div>
+                    <div class="form-group">
+                        <button class="col-xs-12 btn btn-default from-control" type="button" id='splitButton'>Split
+                        </button>
+                    </div>
+                    <div class="form-group">
+                        <button class="col-xs-12 btn btn-default from-control" type="button" id='checksumButton'>Add
+                            Checksum
+                        </button>
+                    </div>
+                    <div class="form-group">
+                        <button class="col-xs-12 btn btn-default from-control" type="button" id='verifyButton'>Verify
+                            Checksum
+                        </button>
+                    </div>
+                    <div class="form-group">
+                        <button class="col-xs-12 btn btn-default from-control" type="button" id='encryptButton'>
+                            Encrypt
+                        </button>
+                    </div>
+                    <div class="form-group">
+                        <button class="col-xs-12 btn btn-default from-control" type="button" id='decryptButton'>
+                            Decrypt
+                        </button>
+                    </div>
+                    <div class="form-group">
+                        <button class="col-xs-12 btn btn-default from-control" type="button" id='randomButton'>Add
+                            Random Number
+                        </button>
+                    </div>
+                    <div class="form-group">
+                        <button class="col-xs-12 btn btn-default from-control" type="button" id='deleteButton'>Delete
+                        </button>
+                    </div>
+                </div>
             </div><!-- #loggedInButtons -->
         </div><!-- #sidebar -->
-        <div id="main">
-            <div id="msgBox">
-                <span>Message to send</span>
-                <input id="msg"
-                    type="text"
-                />
-            </div><!-- #msgBox -->
-            <div id="recipientBox">
-                <span>Recipient (Empty for Broadcast)</span>
-                <input  id="recipient"
-                    type="number"
-                />
-            </div><!-- #recipientBox -->
-            <div id="systemMessages">
-                <strong>
-                    System:&nbsp;
-                </strong>
-                <div id="systemMessage">
-                </div>
-            </div><!-- #systemMessages -->
-            <div id="messageList">
-                <strong>
-                    Messages sent and received
-                </strong>
-            </div><!-- #messageList -->
-        </div><!-- #main -->
     </div><!-- #container -->
+</div>
+<div id="messageList" hidden>
+    <strong>
+        Messages sent and received
+    </strong>
+</div><!-- #messageList -->
+<div id="messageList-encryped" hidden>
+    <strong>
+        Messages sent and received
+    </strong>
+</div><!-- #messageListEncryption -->
+<div id="messageList-checksum" hidden>
+    <strong>
+        Messages sent and received
+    </strong>
+</div>
 </body>
 </html>

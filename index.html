@@ -1,6 +1,5 @@
-<!DOCTYPE html>
-
-<html lang="en">
+<!DOCTYPE HTML>
+<html>
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
@@ -183,136 +182,84 @@
             color: black;
         }
     </style>
-</head>
-<body oncontextmenu="return false;">
 
+    <title>Just a show for the new BYOI</title>
+    <script
+            src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"
+    ></script>
+    <link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.4/themes/smoothness/jquery-ui.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.4/jquery-ui.min.js"></script>
+
+
+    <!-- http://www.myersdaily.org/joseph/javascript/md5.js -->
+    <script src="../md5/md5.js"></script>
+    <!-- include BYOI jQuery plugin -->
+    <script src="../BYOI/byoi.js"></script>
+    <!-- include BYOI configuration -->
+    <script src="js/config.js"></script>
+    <!-- include all the button handlers and websocket connection -->
+    <script src="js/bindings.js"></script>
+    <!-- minimal stylesheet -->
+    <link rel="stylesheet" type="text/css" href="css/style.css">
+</head>
+<body>
 <div class="container-fluid">
     <div class="row">
-        <div class="col-xs-12">
-            <div class="text-center text-capitalize h3"
-                 style="font-family: Century Gothic, sans-serif; font-weight:bold;">
-                Build you own internet
-            </div>
-        </div>
-    </div>
-    <div class="row">
-        <div class="col-xs-12">
-            <div class="jumbotron">
-                <div class="text-center h2" id="systemMessage">
-                    Connect to the server
-                </div>
-            </div>
-        </div>
-    </div>
-    <div class="row">
-        <div class="col-xs-5 vert-offset-top-2">
-            <div id="wheelDiv" style="overflow:unset; height:100%; z-index: 1000;"
-                 data-wheelnav-wheelradius="100"
-                 data-wheelnav-navangle="90"
-                 data-wheelnav-slicepath="DonutSlice"
-                 data-wheelnav-colors="#E34C26,#F06529"
-                 data-wheelnav-rotateoff>
-            </div>
-        </div>
-        <div class="col-xs-7 vert-offset-top-2">
-            <div class="list-group" id="messageBord" style="max-height: 60vh; overflow-y:scroll;">
+        <div class="col-xs-8">
 
-            </div>
         </div>
-    </div>
-    <form class="form-horizontal">
-        <div class="form-group">
-            <div class="col-xs-1 col-xs-offset-5">
-                <select class="form-control" data-role="none">
-                    <option value="0">send to all</option>
-                    <option value="1">send to node 1</option>
-                    <option value="2">send to node 2</option>
-                </select>
-            </div>
-            <div class="col-xs-2">
-                <input type="text" id="msg" name="msg" class="form-control"
-                       placeholder="Send message ...">
-            </div>
-            <div class="col-xs-2">
-                <button class="btn btn-default send form-control" id="sendButton" type="button">send message!
+        <div class="col-xs-4" id="sidebar">
+            <div id="connectionButtons">
+                <button
+                        type="button"
+                        id='connectButton'
+                >Connect
                 </button>
-            </div>
-            <div class="col-xs-2">
-                <button class="btn btn-default send form-control" id="connectButton" type="button">Connection
-                </button>
-            </div>
+            </div><!-- #connectionButtons -->
+            <div id="loggedInButtons">
+                <button type="button" id='closeButton'>Close</button>
+                <button type="button" id='sendButton'>Send Message</button>
+                <button type="button" id='addButton'>Add</button>
+                <button type="button" id='upButton'>Move Up</button>
+                <button type="button" id='downButton'>Move Down</button>
+                <button type="button" id='combineButton'>Combine</button>
+                <button type="button" id='splitButton'>Split</button>
+                <button type="button" id='checksumButton'>Add Checksum</button>
+                <button type="button" id='verifyButton'>Verify Checksum</button>
+                <button type="button" id='encryptButton'>Encrypt</button>
+                <button type="button" id='decryptButton'>Decrypt</button>
+                <button type="button" id='randomButton'>Add Random Number</button>
+                <button type="button" id='deleteButton'>Delete</button>
+            </div><!-- #loggedInButtons -->
         </div>
-        <div class="form-group">
-            <button type="button" class="col-xs-offset-5 btn btn-default" id="splitButton">splitButton</button>
-            <button type="button" class="btn btn-default" id="encryptButton">encryptButton</button>
-            <button class="btn btn-default" id="toggle" type="button">Toggle value
-            </button>
-        </div>
-    </form>
-</div>
-
-<div class="modal fade" tabindex="-1" id="joinModal" role="dialog" aria-labelledby="gridSystemModalLabel">
-    <div class="container">
-        <div class="modal-dialog" role="document">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
-                            aria-hidden="true">&times;</span></button>
-                    <h4 class="modal-title" id="gridSystemModalLabel">Join menu</h4>
-                </div>
-                <div class="modal-body">
-                    <div class="row">
-                        <div class="col-lg-6">
-                            <div class="text-center h3">Joining to getter</div>
-                            <div class="list-group " id="toJoin" style="max-height: 40vh; overflow-y:scroll;">
-                            </div>
-                        </div>
-
-                        <div class="col-lg-6">
-                            <div class="text-center h3">Avalibalbe to join</div>
-                            <div class="list-group" id="avalibleToJoin" style="max-height: 40vh; overflow-y:scroll;">
-
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                    <button type="button" class="btn btn-primary">Save changes</button>
-                </div>
-            </div><!-- /.modal-content -->
-        </div><!-- /.modal-dialog -->
     </div>
-</div><!-- /.modal -->
-
-
-<div class="modal fade" tabindex="-1" id="splitModal" role="dialog" aria-labelledby="splitSystemModalLabel">
-    <div class="container">
-        <div class="modal-dialog" role="document">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
-                            aria-hidden="true">&times;</span></button>
-                    <h4 class="modal-title" id="splitSystemModalLabel">Split menu</h4><br>
-                    <div>The message will be split on the red line in the messagers</div>
-                </div>
-                <div class="modal-body">
-                    <div class="row">
-                        <div id="spiltMessageTextEditor" class="editable"
-                             style="height:300px; max-width: 100%; word-wrap: break-word;overflow-x: hidden;">
-                            testing :D
-                        </div>
-                    </div>
-                    <input type="hidden" name="messageSplitSend"/>
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                    <button type="button" class="btn btn-primary">Send messages</button>
-                </div>
-            </div><!-- /.modal-content -->
-        </div><!-- /.modal-dialog -->
-    </div>
-</div><!-- /.modal -->
+    <div id="main">
+        <div id="msgBox">
+            <span>Message to send</span>
+            <input id="msg"
+                   type="text"
+            />
+        </div><!-- #msgBox -->
+        <div id="recipientBox">
+            <span>Recipient (Empty for Broadcast)</span>
+            <input id="recipient"
+                   type="number"
+            />
+        </div><!-- #recipientBox -->
+        <div id="systemMessages">
+            <strong>
+                System:&nbsp;
+            </strong>
+            <div id="systemMessage">
+            </div>
+        </div><!-- #systemMessages -->
+        <div id="messageList">
+            <strong>
+                Messages sent and received
+            </strong>
+        </div><!-- #messageList -->
+    </div><!-- #main -->
+</div><!-- #container -->
 
 
 </body>
