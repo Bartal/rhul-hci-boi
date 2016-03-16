@@ -50,9 +50,19 @@ $(document).ready(function () {
 
     // bind split method to the message handler
     $('#splitButton').click(function () {
-        $('<div><span class="text">' + $('#msg').val() + '</span></div>').BYOIMessage()
-            .splitMessage().relayMessage();
-        $('#messageBord').getSelectedMessages().toggleSelectMessage();
+
+        var input = $('#msg').val();
+
+        $('#spiltMessageTextEditor').html("");
+
+        var chars = input.split("");
+        for (var i = 0; i < chars.length; ++i) {
+            var object = "<span>" + chars[i] + "</span>";
+            $('#spiltMessageTextEditor').append(object);
+        }
+        updateSplitMessage();
+
+        $('#splitModal').modal('toggle');
     });
 
     // bind checksum method to the message

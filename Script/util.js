@@ -100,7 +100,11 @@ function createSortableListsOnJoin() {
 function dragAndDropMessageList() {
     $("#messageBord").sortable({
         connectWith: "div",
-        dropOnEmpty: true
+        dropOnEmpty: true,
+
+        update: function (event, ui) {
+            console.log(event);
+        }
     });
     $("#messageBord").disableSelection();
     var toJoinDarg = false;
@@ -123,7 +127,7 @@ function openJoinMessage() {
     $('#toJoin').empty();
     $('#avalibleToJoin').empty();
 
-    $('#messageBord').children('.list-group-item').each(function () {
+    $('#messageBord').children('.BYOI-message').each(function () {
         if ($(this).hasClass('BYOI-selected')) {
             $(this).removeClass('BYOI-selected');
             $('#toJoin').append($(this).clone());
@@ -132,7 +136,7 @@ function openJoinMessage() {
             $('#avalibleToJoin').append($(this).clone());
         }
     });
-
+    $('#messageBord').getSelectedMessages().toggleSelectMessage();
     $('#joinModal').modal('toggle');
 }
 
@@ -202,25 +206,23 @@ function addMessageToMessageList(message) {
     return true;
 }
 
-function updateSplitMessage() {
+function updateSplitMessage(event) {
+    var maxlenght = BYOI.config('')['MSG_MAX_LEN'];
+
+    //Get the current text
+
     $('#spiltMessageTextEditor').children('.charSplit').each(function () {
         $(this).remove();
     });
-    var childEleemtns = $("#spiltMessageTextEditor").text().split("");
-    $("#spiltMessageTextEditor").empty();
-    for (var i = 0; i < childEleemtns.length; ++i) {
-        if (i != 0 && (i % maxCharLenght) == 0) {
-            $('#spiltMessageTextEditor').append(charSplit);
-            console.log("I am trying to split an message")
-        }
-        var object = "<span>" + childEleemtns[i] + "</span>";
-        $('#spiltMessageTextEditor').append(object);
-    }
+
+    $('#spiltMessageTextEditor').children("span:nth-child(" + maxlenght + "n)").each(function () {
+        $(this).after(charSplit);
+    });
 }
 
 
 function addRandonNumber() {
-    console.log("Adding an random number")
+    console.log("Adding an random number");
     var value = $('#messageInput').val();
     var number = Math.round((Math.random() * 100));
     $('#messageInput').val(number + value);
