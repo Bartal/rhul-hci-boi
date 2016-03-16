@@ -146,7 +146,26 @@ $(document).ready(function () {
         if ($(this).hasClass('send')) {
             var html = '<div><span class="text">' + $('#msg').val() + '</span></div>';
 
-            $(html).BYOIMessage().send($('#recipient').val());
+            var message = $(html).BYOIMessage().send($('#recipient').val());
+            var dataCopy = message.data();
+
+
+            var footer = "";
+            if (message.data("to") == 0) { // broadcast message
+                footer = 'Broadcast Message';
+            } else { // regular message
+                footer = '<div class="sent">Sent To:<span class="node">' + message.data("to") + '</span></div>';
+            }
+
+            var newHTMLforMessage = "<a href=\"#\" class=\"list-group-item\">"
+                + "<div class=\"list-group-item-text broadcast\">"
+                + "    <div class=\"h2 text-justify text\">" + message.data('text') + "</div>"
+                + "<span class=\"small\">" + footer + "</span>"
+                + "</div>"
+                + "</a>";
+
+            message.html(newHTMLforMessage);
+            message.addMetadata(message);
             $('#messageBord').getSelectedMessages().toggleSelectMessage();
 
         } else {
