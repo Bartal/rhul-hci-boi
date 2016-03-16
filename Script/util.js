@@ -209,7 +209,23 @@ function addMessageToMessageList(message) {
 function updateSplitMessage(event) {
     var maxlenght = BYOI.config('')['MSG_MAX_LEN'];
 
-    //Get the current text
+    // Update to o
+    $("#spiltMessageTextEditor").contents().filter(function () {
+        return (this.innerHTML !== undefined && this.innerHTML.length > 1) || this.nodeType === 3;
+    }).each(function () {
+        if (this.nodeType === 3) {
+            var text = this.textContent;
+        } else {
+            var text = this.innerHTML;
+        }
+        var chars = text.split("");
+        var object = "";
+        for (var i = 0; i < chars.length; ++i) {
+            object += "<span>" + chars[i] + "</span>";
+        }
+        $(this).before(object);
+        $(this).remove();
+    });
 
     $('#spiltMessageTextEditor').children('.charSplit').each(function () {
         $(this).remove();
