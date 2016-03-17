@@ -4,7 +4,6 @@
     <list default="true" id="35ee4449-66f7-43c2-9448-84b8833c2cf2" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Script/BYOI-webClient-v2.0/example/index.html" afterPath="$PROJECT_DIR$/Script/BYOI-webClient-v2.0/example/index.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Script/BYOI-webClient-v2.0/example/js/util.js" afterPath="$PROJECT_DIR$/Script/BYOI-webClient-v2.0/example/js/util.js" />
     </list>
     <ignored path="team-project-davi.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -36,8 +35,8 @@
       <file leaf-file-name="index.html" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/Script/BYOI-webClient-v2.0/example/index.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.5755396">
-              <caret line="134" column="39" selection-start-line="134" selection-start-column="39" selection-end-line="134" selection-end-column="39" />
+            <state vertical-scroll-proportion="0.017985612">
+              <caret line="103" column="28" selection-start-line="103" selection-start-column="28" selection-end-line="103" selection-end-column="28" />
               <folding>
                 <element signature="n#style#0;n#div#0;n#div#0;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
                 <element signature="n#style#0;n#div#0;n#div#0;n#div#0;n#div#1;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
@@ -603,7 +602,13 @@
       <option name="project" value="LOCAL" />
       <updated>1458219847696</updated>
     </task>
-    <option name="localTasksCounter" value="38" />
+    <task id="LOCAL-00038" summary="Change over to test type two">
+      <created>1458220950270</created>
+      <option name="number" value="00038" />
+      <option name="project" value="LOCAL" />
+      <updated>1458220950270</updated>
+    </task>
+    <option name="localTasksCounter" value="39" />
     <servers />
   </component>
   <component name="ToolWindowManager">
@@ -644,7 +649,6 @@
   <component name="VcsManagerConfiguration">
     <option name="CHECK_CODE_SMELLS_BEFORE_PROJECT_COMMIT" value="false" />
     <option name="CHECK_NEW_TODO" value="false" />
-    <MESSAGE value="Update the view to match the feedback from the user / lectures" />
     <MESSAGE value="Move files around to match the include from the project" />
     <MESSAGE value="Add in the files that where not added by defult" />
     <MESSAGE value="Update to an new message system to make it eaier to show changes" />
@@ -669,7 +673,8 @@
     <MESSAGE value="Add in all the function into the wheel, by copy and not by function call, also update the modify message to verify checksum.&#10;&#10;&#10;" />
     <MESSAGE value="SUPER CHANGE TO THE API GETTING IT WORKING MAN" />
     <MESSAGE value="Merage in Dan changes" />
-    <option name="LAST_COMMIT_MESSAGE" value="Merage in Dan changes" />
+    <MESSAGE value="Change over to test type two" />
+    <option name="LAST_COMMIT_MESSAGE" value="Change over to test type two" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager />
@@ -1134,8 +1139,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/Script/BYOI-webClient-v2.0/example/index.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.5755396">
-          <caret line="134" column="39" selection-start-line="134" selection-start-column="39" selection-end-line="134" selection-end-column="39" />
+        <state vertical-scroll-proportion="0.017985612">
+          <caret line="103" column="28" selection-start-line="103" selection-start-column="28" selection-end-line="103" selection-end-column="28" />
           <folding>
             <element signature="n#style#0;n#div#0;n#div#0;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
             <element signature="n#style#0;n#div#0;n#div#0;n#div#0;n#div#1;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
