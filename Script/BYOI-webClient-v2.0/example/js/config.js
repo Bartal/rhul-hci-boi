@@ -16,16 +16,16 @@ $(document).ready(function () {
             // Configuration hooks
             // called when any message from the server is received
             onMessageReceived: function (type, msg) {
-                console.log(type, msg);
                 if (type == 'CONNECTED') {
                     $('#connectionButtons').hide();
                     $('#loggedInButtons').show();
+                    $("#wheelDiv").show();
                     $('#main').show();
                 } else if (type == 'PACKET') {
+
                     //react in a meaningful way :)
                 } else if (type == 'TASK') {
                     var task = $("#messageList-task").children().last().data('text');
-
                     $('#task').html(task);
                 }
             },
@@ -43,6 +43,7 @@ $(document).ready(function () {
             // called after the current client sends a message to the
             // server
             onSend: function (msg) {
+                $('#msg').val('');
             },
         });
     }

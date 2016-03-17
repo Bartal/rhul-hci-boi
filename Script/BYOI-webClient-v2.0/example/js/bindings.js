@@ -166,7 +166,7 @@ $(document).ready(function () {
         // sent message to the server
         $(html).BYOIMessage().send($('#recipient').val());
         $('#messageList').getSelectedMessages().toggleSelectMessage();
-        $('#msg').val('');
+
     });
 
 
