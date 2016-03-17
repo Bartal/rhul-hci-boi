@@ -19,9 +19,9 @@
     <script src="js/util.js"></script>
 
     <!-- http://www.myersdaily.org/joseph/javascript/md5.js -->
-    <script src="../md5/md5.js"></script>
+    <script src="js/md5/md5.js"></script>
     <!-- include BYOI jQuery plugin -->
-    <script src="../BYOI/byoi.js"></script>
+    <script src="js/BYOI/byoi.js"></script>
     <!-- include BYOI configuration -->
     <script src="js/config.js"></script>
     <!-- include all the button handlers and websocket connection -->
@@ -138,40 +138,37 @@
                 Message
             </button>
         </div>
+        <div class="col-xs-4" id='sidebar'>
+            <div id="loggedInButtons" style="margin-top: 10px;">
+                <div class="row">
+                    <button class="col-xs-12 btn btn-default form-control" type="button" id='closeButton'>Close Network
+                        Session
+                    </button>
+                </div>
 
-    </div><!-- #main -->
-    <div class="col-xs-12" id='sidebar'>
-        <div id="loggedInButtons" style="margin-top: 10px;">
+            </div>
+
             <div class="row">
-                <button class="col-xs-12 btn btn-default form-control" type="button" id='closeButton'>Close Network
-                    Session
-                </button>
+                <div id="wheelDiv" style="overflow:unset; height:100%; z-index: 1000;"
+                     data-wheelnav-wheelradius="100"
+                     data-wheelnav-navangle="90"
+                     data-wheelnav-slicepath="DonutSlice"
+                     data-wheelnav-colors="#E34C26,#F06529"
+                     data-wheelnav-rotateoff>
+                </div>
             </div>
-
-        </div>
-
-        <div class="row">
-            <div id="wheelDiv" style="overflow:unset; height:100%; z-index: 1000;"
-                 data-wheelnav-wheelradius="100"
-                 data-wheelnav-navangle="90"
-                 data-wheelnav-slicepath="DonutSlice"
-                 data-wheelnav-colors="#E34C26,#F06529"
-                 data-wheelnav-rotateoff>
-            </div>
-        </div>
-        <div class="row">
-            <div id="connectionButtons" style="text-align: center; margin: auto;">
-                <button
-                        type="button"
-                        id='connectButton'
-                        style="height:150px; width: 300px;"
-                >Connect to Network
-                </button>
-            </div><!-- #connectionButtons -->
-        </div><!-- #loggedInButtons -->
-    </div><!-- #sidebar -->
-</div>
-
+            <div class="row">
+                <div id="connectionButtons" style="text-align: center; margin: auto;">
+                    <button
+                            type="button"
+                            id='connectButton'
+                            style="height:150px; width: 300px;"
+                    >Connect to Network
+                    </button>
+                </div><!-- #connectionButtons -->
+            </div><!-- #loggedInButtons -->
+        </div><!-- #sidebar -->
+    </div><!-- #main -->
 </div><!-- #container -->
 
 
