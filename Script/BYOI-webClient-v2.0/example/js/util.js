@@ -4,9 +4,9 @@ var encryptionTspan;
 function renderWheel() {
     wheel = new wheelnav("wheelDiv");
 
-    wheel.slicePathFunction = slicePath().LineSlice;
-    wheel.markerEnable = true;
-    wheel.initWheel(["Delete\nMessage", "Add\nChecksum", "Join\n Messages", "verify\nchecksum", "Add\n Random\nNumber", "Decrypt\nMessage"]);
+    wheel.slicePathFunction = slicePath().TabSlice;
+    //wheel.markerEnable = true;
+    wheel.initWheel(["Delete\nMessage", "Add\nChecksum", "Join\n Messages", "Verify\nchecksum", "Add\n Random\nNumber", "Decrypt\nMessage"]);
 
     wheel.clockwise = false;
     wheel.clickModeRotate = false;
@@ -54,6 +54,7 @@ function addCallbackFunction() {
         $('#joinModal').modal('toggle');
 
         $('#messageList').getSelectedMessages().toggleSelectMessage();
+
     };
 
     wheel.navItems[3].navigateFunction = function () {

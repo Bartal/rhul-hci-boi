@@ -100,7 +100,39 @@
         </div>
     </div>
     <div class="row">
-        <div id="main" class="col-xs-8">
+
+        <div class="col-xs-2" id='sidebar'>
+            <div class="row">
+                <div id="loggedInButtons" style="margin-top: 10px;">
+
+                    <button class="col-xs-12 btn btn-default form-control" type="button" id='closeButton'>Close Network
+                        Session
+                    </button>
+                </div>
+
+            </div>
+
+            <div class="row">
+                <div id="wheelDiv" style="overflow:unset; height:100%; z-index: 1000;"
+                     data-wheelnav-wheelradius="100"
+                     data-wheelnav-navangle="90"
+                     data-wheelnav-slicepath="DonutSlice"
+                     data-wheelnav-colors="#E34C26,#F06529"
+                     data-wheelnav-rotateoff>
+                </div>
+            </div>
+            <div class="row">
+                <div id="connectionButtons" style="text-align: center; margin: auto;">
+                    <button
+                            type="button"
+                            id='connectButton'
+                            style="height:150px; width: 300px;"
+                    >Connect to Network
+                    </button>
+                </div><!-- #connectionButtons -->
+            </div><!-- #loggedInButtons -->
+        </div><!-- #sidebar -->
+        <div id="main" class="col-xs-10">
             <div class="row">
                 <div class="col-xs-12">
                     <div class="jumbotron" style="font-size: 160%;">
@@ -139,37 +171,9 @@
             </button>
         </div>
 
-    </div><!-- #main -->
-    <div class="col-xs-12" id='sidebar'>
-        <div id="loggedInButtons" style="margin-top: 10px;">
-            <div class="row">
-                <button class="col-xs-12 btn btn-default form-control" type="button" id='closeButton'>Close Network
-                    Session
-                </button>
-            </div>
+        <!-- #main -->
 
-        </div>
-
-        <div class="row">
-            <div id="wheelDiv" style="overflow:unset; height:100%; z-index: 1000;"
-                 data-wheelnav-wheelradius="100"
-                 data-wheelnav-navangle="90"
-                 data-wheelnav-slicepath="DonutSlice"
-                 data-wheelnav-colors="#E34C26,#F06529"
-                 data-wheelnav-rotateoff>
-            </div>
-        </div>
-        <div class="row">
-            <div id="connectionButtons" style="text-align: center; margin: auto;">
-                <button
-                        type="button"
-                        id='connectButton'
-                        style="height:150px; width: 300px;"
-                >Connect to Network
-                </button>
-            </div><!-- #connectionButtons -->
-        </div><!-- #loggedInButtons -->
-    </div><!-- #sidebar -->
+    </div>
 </div>
 
 </div><!-- #container -->
