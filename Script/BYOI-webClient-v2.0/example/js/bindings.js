@@ -9,7 +9,7 @@ $(document).ready(function () {
 
     $('#deleteButton').click(function () {
         // delete all selected messages from the main Message Handler
-        $('#messageList').getSelectedMessages().remove();
+        $('#messageBord').getSelectedMessages().remove();
     });
 
     $('#addButton').click(function () {
@@ -57,20 +57,10 @@ $(document).ready(function () {
             toJoinDarg = false;
         }).on('mousemove', '.BYOI-message', function () {
             toJoinDarg = true;
+        }).on('dblclick', '.BYOI-message', function () {
+            $('#msg').val($(this).data('text'));
         });
-    });
 
-    // bind combine method to the message handler
-    $('#combineButton').click(function () {
-        $('#messageList').combineMessages();
-        $('#messageList').getSelectedMessages().toggleSelectMessage();
-    });
-
-    // bind split method to the message handler
-    $('#splitButton').click(function () {
-        $('<div><span class="text">' + $('#msg').val() + '</span></div>').BYOIMessage()
-            .splitMessage().relayMessage();
-        $('#messageList').getSelectedMessages().toggleSelectMessage();
     });
 
     // bind checksum method to the message
@@ -177,12 +167,27 @@ $(document).ready(function () {
         // sent message to the server
         $(html).BYOIMessage().send($('#recipient').val());
         $('#messageList').getSelectedMessages().toggleSelectMessage();
+        $('#msg').val('');
     });
 
 
     // bind close connection method to the message handler
     $('#closeButton').click(function () {
         BYOI.connection.close();
+    });
+
+
+    // bind combine method to the message handler
+    $('#combineButton').click(function () {
+        $('#messageList').combineMessages();
+        $('#messageList').getSelectedMessages().toggleSelectMessage();
+    });
+
+    // bind split method to the message handler
+    $('#splitButton').click(function () {
+        $('<div><span class="text">' + $('#msg').val() + '</span></div>').BYOIMessage()
+            .splitMessage().relayMessage();
+        $('#messageList').getSelectedMessages().toggleSelectMessage();
     });
 
 
@@ -194,7 +199,6 @@ $(document).ready(function () {
             $('#systemMessage').html(alert);
             $('#systemMessages').alert();
             $('#systemMessages').fadeTo(2000, 500).slideUp(500, function () {
-                $('#systemMessages').alert('close');
             });
 
         }
@@ -232,7 +236,7 @@ $(document).ready(function () {
                 return true;
             } else if (msg.hasClass('received')) {
                 var dataCopy = $(msg).data();
-                var newMessage = "  <a href=\"#\" class=\"list-group-item received BYOI-message\">"
+                var newMessage = "  <a href=\"#\" class=\"list-group-item received\">"
                     + "    <h4 class=\"list-group-item-heading text\">" + msg.data('text') + "</h4>"
                     + "    <p class=\"list-group-item-text connected\">" + msg.data('node') + "</p>"
                     + "  </a> ";
@@ -241,7 +245,7 @@ $(document).ready(function () {
                 return true;
             } else if (msg.hasClass('added')) {
                 var dataCopy = $(msg).data();
-                var newMessage = "  <a href=\"#\" class=\"list-group-item added BYOI-message\">"
+                var newMessage = "  <a href=\"#\" class=\"list-group-item\">"
                     + "    <h4 class=\"list-group-item-heading text\">" + msg.data('text') + "</h4>"
                     + "    <p class=\"list-group-item-text connected\">" + "self add message" + "</p>"
                     + "  </a> ";
@@ -260,7 +264,7 @@ $(document).ready(function () {
     });
 
     checksumList = $('#messageList-checksum').BYOIMessageHandler({
-        accept: function(msg){
+        accept: function (msg) {
             return msg.hasClass('checksum');
         }
     });

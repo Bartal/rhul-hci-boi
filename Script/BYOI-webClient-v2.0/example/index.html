@@ -35,6 +35,20 @@
         .received {
             color: black;
         }
+
+        .BYOI-selected {
+            background-color: #aa5500;
+            border-color: #aa5500;
+        }
+
+        .BYOI-selected > .list-group-item {
+            background-color: #aa5500;
+            border-color: #aa5500;
+        }
+
+        .list-group-item-heading {
+            word-wrap: break-word;
+        }
     </style>
     <script>
         $(document).ready(function () {
@@ -47,26 +61,11 @@
     <div class="row">
         <div id="main" class="col-xs-8">
             <div class="row">
-                <div id="msgBox" class="col-xs-12">
-                    <span>Message to send</span>
-                    <input id="msg"
-                           type="text"
-                    />
-                </div><!-- #msgBox -->
-            </div>
-            <div class="row">
-                <div id="recipientBox" class="col-xs-12">
-                    <span>Recipient (Empty for Broadcast)</span>
-                    <input id="recipient"
-                           type="number"
-                    />
-                </div><!-- #recipientBox -->
-            </div>
-            <div class="row">
                 <div class="col-xs-12">
                     <div id="task" class="jumbotron">
                         Task her
                     </div>
+
                     <div class="alert alert-warning" id="systemMessages">
                         <button type="button" class="close" data-dismiss="alert">x</button>
                         <div id="systemMessage">
@@ -82,6 +81,14 @@
                     </div>
                 </div>
             </div>
+            <div class="form-group" id="msgBox">
+                <label for="msg">Message to send:</label>
+                <input type="text" class="form-control" id="msg">
+            </div>
+            <div class="form-group" id="recipientBox">
+                <label for="recipient">Resipitan</label>
+                <input type="number" class="form-control" id="recipient">
+            </div>
         </div><!-- #main -->
         <div class="col-xs-4" id='sidebar'>
             <div id="connectionButtons">
@@ -93,61 +100,53 @@
             </div><!-- #connectionButtons -->
             <div id="loggedInButtons">
                 <div class="form-inline">
-                    <div class="form-group">
+                    <div class="row">
                         <button class="col-xs-12 btn btn-default form-control" type="button" id='closeButton'>Close
                         </button>
                     </div>
-                    <div class="form-group">
+                    <div class="row">
                         <button class="col-xs-12 btn btn-default from-control" type="button" id='sendButton'>Send
                             Message
                         </button>
                     </div>
-                    <div class="form-group">
+                    <div class="row">
                         <button class="col-xs-12 btn btn-default from-control" type="button" id='addButton'>Add</button>
                     </div>
-                    <div class="form-group">
-                        <button class="col-xs-12 btn btn-default from-control" type="button" id='upButton'>Move Up
-                        </button>
-                    </div>
-                    <div class="form-group">
-                        <button class="col-xs-12 btn btn-default from-control" type="button" id='downButton'>Move Down
-                        </button>
-                    </div>
-                    <div class="form-group">
+                    <div class="row">
                         <button class="col-xs-12 btn btn-default from-control" type="button" id='combineButton'>
                             Combine
                         </button>
                     </div>
-                    <div class="form-group">
+                    <div class="row">
                         <button class="col-xs-12 btn btn-default from-control" type="button" id='splitButton'>Split
                         </button>
                     </div>
-                    <div class="form-group">
+                    <div class="row">
                         <button class="col-xs-12 btn btn-default from-control" type="button" id='checksumButton'>Add
                             Checksum
                         </button>
                     </div>
-                    <div class="form-group">
+                    <div class="row">
                         <button class="col-xs-12 btn btn-default from-control" type="button" id='verifyButton'>Verify
                             Checksum
                         </button>
                     </div>
-                    <div class="form-group">
+                    <div class="row">
                         <button class="col-xs-12 btn btn-default from-control" type="button" id='encryptButton'>
                             Encrypt
                         </button>
                     </div>
-                    <div class="form-group">
+                    <div class="row">
                         <button class="col-xs-12 btn btn-default from-control" type="button" id='decryptButton'>
                             Decrypt
                         </button>
                     </div>
-                    <div class="form-group">
+                    <div class="row">
                         <button class="col-xs-12 btn btn-default from-control" type="button" id='randomButton'>Add
                             Random Number
                         </button>
                     </div>
-                    <div class="form-group">
+                    <div class="row">
                         <button class="col-xs-12 btn btn-default from-control" type="button" id='deleteButton'>Delete
                         </button>
                     </div>
