@@ -155,6 +155,75 @@
         </div><!-- #sidebar -->
     </div><!-- #container -->
 </div>
+
+
+
+
+<div class="modal fade" tabindex="-1" id="joinModal" role="dialog" aria-labelledby="gridSystemModalLabel">
+    <div class="container">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
+                            aria-hidden="true">&times;</span></button>
+                    <h4 class="modal-title" id="gridSystemModalLabel">Join menu</h4>
+                </div>
+                <div class="modal-body">
+                    <div class="row">
+                        <div class="col-lg-6">
+                            <div class="text-center h3">Joining to getter</div>
+                            <div class="list-group " id="toJoin" style="max-height: 40vh; overflow-y:scroll;">
+                            </div>
+                        </div>
+
+                        <div class="col-lg-6">
+                            <div class="text-center h3">Avalibalbe to join</div>
+                            <div class="list-group" id="avalibleToJoin" style="max-height: 40vh; overflow-y:scroll;">
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-primary">Save changes</button>
+                </div>
+            </div><!-- /.modal-content -->
+        </div><!-- /.modal-dialog -->
+    </div>
+</div><!-- /.modal -->
+
+
+<div class="modal fade" tabindex="-1" id="splitModal" role="dialog" aria-labelledby="splitSystemModalLabel">
+    <div class="container">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
+                            aria-hidden="true">&times;</span></button>
+                    <h4 class="modal-title" id="splitSystemModalLabel">Split menu</h4><br>
+                    <div>The message will be split on the red line in the messagers</div>
+                </div>
+                <div class="modal-body">
+                    <div class="row">
+                        <div id="spiltMessageTextEditor" class="editable"
+                             style="height:300px; max-width: 100%; word-wrap: break-word;overflow-x: hidden;">
+                            testing :D
+                        </div>
+                    </div>
+                    <input type="hidden" name="messageSplitSend"/>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal" id="split-closeButton">Close</button>
+                    <button type="button" class="btn btn-primary" id="split-sendButton">Send messages</button>
+                </div>
+            </div><!-- /.modal-content -->
+        </div><!-- /.modal-dialog -->
+    </div>
+</div><!-- /.modal -->
+
+
+
 <div id="messageList" hidden>
     <strong>
         Messages sent and received
@@ -166,6 +235,11 @@
     </strong>
 </div><!-- #messageListEncryption -->
 <div id="messageList-checksum" hidden>
+    <strong>
+        Messages sent and received
+    </strong>
+</div>
+<div id="messageList-task" hidden>
     <strong>
         Messages sent and received
     </strong>

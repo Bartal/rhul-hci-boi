@@ -1,10 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="35ee4449-66f7-43c2-9448-84b8833c2cf2" name="Default" comment="">
+    <list default="true" id="35ee4449-66f7-43c2-9448-84b8833c2cf2" name="Default" comment="Update the delete message of the list, &#10;Update some css so that selected message show that they are seletect&#10;&#10;Update so that duble click an message will insert into the input box&#10;&#10;Update the buttons to be one per line &#10;&#10;">
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Script/BYOI-webClient-v2.0/example/js/util.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Script/BYOI-webClient-v2.0/example/index.html" afterPath="$PROJECT_DIR$/Script/BYOI-webClient-v2.0/example/index.html" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Script/BYOI-webClient-v2.0/example/js/bindings.js" afterPath="$PROJECT_DIR$/Script/BYOI-webClient-v2.0/example/js/bindings.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Script/BYOI-webClient-v2.0/example/js/config.js" afterPath="$PROJECT_DIR$/Script/BYOI-webClient-v2.0/example/js/config.js" />
     </list>
     <ignored path="team-project-davi.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -33,13 +35,33 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
+      <file leaf-file-name="index-2.html" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/index-2.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="-17.208334">
+              <caret line="46" column="12" selection-start-line="46" selection-start-column="12" selection-end-line="46" selection-end-column="67" />
+              <folding>
+                <element signature="n#style#0;n#div#0;n#div#0;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#div#0;n#div#0;n#div#2;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#div#0;n#div#1;n#div#2;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#div#1;n#div#0;n#div#0;n#div#1;n#div#0;n#div#0;n#div#0;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#div#1;n#div#1;n#div#0;n#div#1;n#div#0;n#div#0;n#div#0;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#div#0;n#div#0;n#div#1;n#div#0;n#div#0;n#div#0;n#div#2;n#body#0;n#html#0;n#!!top" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
       <file leaf-file-name="index.html" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Script/BYOI-webClient-v2.0/example/index.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-22.5">
-              <caret line="78" column="59" selection-start-line="78" selection-start-column="48" selection-end-line="78" selection-end-column="59" />
+            <state vertical-scroll-proportion="-13.169811">
+              <caret line="216" column="108" selection-start-line="216" selection-start-column="91" selection-end-line="216" selection-end-column="108" />
               <folding>
                 <element signature="n#style#0;n#div#0;n#div#0;n#div#1;n#div#0;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#div#1;n#div#0;n#div#0;n#div#1;n#div#0;n#div#0;n#div#0;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#div#1;n#div#1;n#div#0;n#div#1;n#div#0;n#div#0;n#div#0;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#div#0;n#div#0;n#div#1;n#div#0;n#div#0;n#div#0;n#div#2;n#body#0;n#html#0;n#!!top" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -48,15 +70,59 @@
       <file leaf-file-name="bindings.js" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/Script/BYOI-webClient-v2.0/example/js/bindings.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.4735062">
-              <caret line="211" column="33" selection-start-line="211" selection-start-column="33" selection-end-line="211" selection-end-column="33" />
+            <state vertical-scroll-proportion="0.3404735">
+              <caret line="216" column="42" selection-start-line="216" selection-start-column="42" selection-end-line="216" selection-end-column="42" />
               <folding>
-                <marker date="1458179392787" expanded="true" signature="9175:9383" placeholder="..." />
-                <marker date="1458179392787" expanded="true" signature="9680:9841" placeholder="..." />
-                <marker date="1458179392787" expanded="true" signature="9680:9913" placeholder="..." />
-                <marker date="1458179392787" expanded="true" signature="10197:10371" placeholder="..." />
-                <marker date="1458179392787" expanded="true" signature="10197:10432" placeholder="..." />
+                <marker date="1458182088352" expanded="true" signature="45:54" placeholder="..." />
+                <marker date="1458182088352" expanded="true" signature="11590:11798" placeholder="..." />
+                <marker date="1458182088352" expanded="true" signature="12095:12256" placeholder="..." />
+                <marker date="1458182088352" expanded="true" signature="12095:12328" placeholder="..." />
+                <marker date="1458182088352" expanded="true" signature="12612:12786" placeholder="..." />
+                <marker date="1458182088352" expanded="true" signature="12612:12847" placeholder="..." />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="EcmaScript.js" pinned="false" current-in-tab="false">
+        <entry file="jar://$APPLICATION_HOME_DIR$/plugins/JavaScriptLanguage/lib/JavaScriptLanguage.jar!/com/intellij/lang/javascript/index/predefined/EcmaScript.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0">
+              <caret line="741" column="9" selection-start-line="741" selection-start-column="9" selection-end-line="741" selection-end-column="9" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="byoi.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/Script/BYOI-webClient-v2.0/BYOI/byoi.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0">
+              <caret line="383" column="37" selection-start-line="383" selection-start-column="37" selection-end-line="383" selection-end-column="37" />
+              <folding>
+                <marker date="1458144475510" expanded="true" signature="1361:1419" placeholder="..." />
+                <marker date="1458144475510" expanded="true" signature="1379:1413" placeholder="..." />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="config.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/Script/BYOI-webClient-v2.0/example/js/config.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0">
+              <caret line="27" column="0" selection-start-line="27" selection-start-column="0" selection-end-line="27" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="index.html" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/index.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="-5.245283">
+              <caret line="35" column="73" selection-start-line="35" selection-start-column="12" selection-end-line="35" selection-end-column="73" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -64,10 +130,10 @@
       <file leaf-file-name="util.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Script/BYOI-webClient-v2.0/example/js/util.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-9.862069">
-              <caret line="22" column="28" selection-start-line="22" selection-start-column="22" selection-end-line="22" selection-end-column="28" />
+            <state vertical-scroll-proportion="-0.51724136">
+              <caret line="1" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="1" selection-end-column="0" />
               <folding>
-                <marker date="1458094733000" expanded="true" signature="45:54" placeholder="..." />
+                <marker date="1458180719963" expanded="true" signature="45:54" placeholder="..." />
               </folding>
             </state>
           </provider>
@@ -99,6 +165,8 @@
         <option value="$PROJECT_DIR$/Script/BYOI-webClient-v2.0/BYOI/byoi.js" />
         <option value="$PROJECT_DIR$/index.html" />
         <option value="$PROJECT_DIR$/index-2.html" />
+        <option value="$PROJECT_DIR$/Script/BYOI-webClient-v2.0/example/js/config.js" />
+        <option value="$PROJECT_DIR$/Script/BYOI-webClient-v2.0/example/js/util.js" />
         <option value="$PROJECT_DIR$/Script/BYOI-webClient-v2.0/example/index.html" />
         <option value="$PROJECT_DIR$/Script/BYOI-webClient-v2.0/example/js/bindings.js" />
       </list>
@@ -508,7 +576,13 @@
       <option name="project" value="LOCAL" />
       <updated>1458171512100</updated>
     </task>
-    <option name="localTasksCounter" value="29" />
+    <task id="LOCAL-00029" summary="Update the delete message of the list, &#10;Update some css so that selected message show that they are seletect&#10;&#10;Update so that duble click an message will insert into the input box&#10;&#10;Update the buttons to be one per line &#10;&#10;">
+      <created>1458179633064</created>
+      <option name="number" value="00029" />
+      <option name="project" value="LOCAL" />
+      <updated>1458179633064</updated>
+    </task>
+    <option name="localTasksCounter" value="30" />
     <servers />
   </component>
   <component name="ToolWindowManager">
@@ -569,7 +643,6 @@
   <component name="VcsManagerConfiguration">
     <option name="CHECK_CODE_SMELLS_BEFORE_PROJECT_COMMIT" value="false" />
     <option name="CHECK_NEW_TODO" value="false" />
-    <MESSAGE value="Clearn up the main script in index, by movie stuff into function in utils&#10;&#10;update so that input will update the amount of chars left before haveing to split the message.&#10;&#10;also update so that add in new messages is easire and made the selection dynamic so that update the list of message makes it eaire to have the select working&#10;&#10;&#10;Add in the split and join dialogs with out functions" />
     <MESSAGE value="Update the wheel to use the css options for drawing the wheel, (might not be good for older browers), start on the called back functions for the menu wheel" />
     <MESSAGE value="Update the split message so that it wraps the words in the editor, and also it will add in the split possion of the message with an red line" />
     <MESSAGE value="Addin button for opening up the join message menu, just for now, &#10;also add in that only selected elements get add into the to join list, and the rest are left in the avalibale to join list" />
@@ -594,23 +667,14 @@
     <MESSAGE value="Start on getting the split message to replace the message in line so that the user can edit the message without it moveing the curese possion" />
     <MESSAGE value="Update the split window to be live, so that it update the red markes in place without disterping the user" />
     <MESSAGE value="Update to use the build in API example, got most of the function working as plannd" />
-    <option name="LAST_COMMIT_MESSAGE" value="Update to use the build in API example, got most of the function working as plannd" />
+    <MESSAGE value="Update the delete message of the list, &#10;Update some css so that selected message show that they are seletect&#10;&#10;Update so that duble click an message will insert into the input box&#10;&#10;Update the buttons to be one per line &#10;&#10;" />
+    <option name="LAST_COMMIT_MESSAGE" value="Update the delete message of the list, &#10;Update some css so that selected message show that they are seletect&#10;&#10;Update so that duble click an message will insert into the input box&#10;&#10;Update the buttons to be one per line &#10;&#10;" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager />
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/Script/util.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="53" column="0" selection-start-line="53" selection-start-column="0" selection-end-line="53" selection-end-column="0" />
-          <folding>
-            <marker date="1458094733847" expanded="true" signature="45:54" placeholder="..." />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/Style/bootstra.386-latest-v3/dist/js/bootstrap.js">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
@@ -933,17 +997,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Script/BYOI-webClient-v2.0/BYOI/byoi.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.18538135">
-          <caret line="496" column="0" selection-start-line="496" selection-start-column="0" selection-end-line="496" selection-end-column="0" />
-          <folding>
-            <marker date="1458144475510" expanded="true" signature="1361:1419" placeholder="..." />
-            <marker date="1458144475510" expanded="true" signature="1379:1413" placeholder="..." />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/Script/BYOI-webClient-v2.0/messageFactory.js">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.22245763">
@@ -979,13 +1032,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.7970688">
           <caret line="0" column="11294" selection-start-line="0" selection-start-column="11293" selection-end-line="0" selection-end-column="11294" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Script/BYOI-webClient-v2.0/example/js/config.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.36065573">
-          <caret line="22" column="46" selection-start-line="22" selection-start-column="46" selection-end-line="22" selection-end-column="46" />
           <folding />
         </state>
       </provider>
@@ -1016,16 +1062,45 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/index.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="1.4347826">
-          <caret line="190" column="98" selection-start-line="190" selection-start-column="98" selection-end-line="190" selection-end-column="98" />
+        <state vertical-scroll-proportion="-5.245283">
+          <caret line="35" column="73" selection-start-line="35" selection-start-column="12" selection-end-line="35" selection-end-column="73" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Script/BYOI-webClient-v2.0/example/js/util.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-0.51724136">
+          <caret line="1" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="1" selection-end-column="0" />
+          <folding>
+            <marker date="1458180719963" expanded="true" signature="45:54" placeholder="..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Script/BYOI-webClient-v2.0/BYOI/byoi.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="383" column="37" selection-start-line="383" selection-start-column="37" selection-end-line="383" selection-end-column="37" />
+          <folding>
+            <marker date="1458144475510" expanded="true" signature="1361:1419" placeholder="..." />
+            <marker date="1458144475510" expanded="true" signature="1379:1413" placeholder="..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Script/BYOI-webClient-v2.0/example/js/config.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="27" column="0" selection-start-line="27" selection-start-column="0" selection-end-line="27" selection-end-column="0" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/index-2.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-3.9782608">
-          <caret line="14" column="0" selection-start-line="14" selection-start-column="0" selection-end-line="15" selection-end-column="0" />
+        <state vertical-scroll-proportion="-17.208334">
+          <caret line="46" column="12" selection-start-line="46" selection-start-column="12" selection-end-line="46" selection-end-column="67" />
           <folding>
             <element signature="n#style#0;n#div#0;n#div#0;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
             <element signature="n#style#0;n#div#0;n#div#0;n#div#2;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
@@ -1037,36 +1112,38 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Script/BYOI-webClient-v2.0/example/js/util.js">
+    <entry file="jar://$APPLICATION_HOME_DIR$/plugins/JavaScriptLanguage/lib/JavaScriptLanguage.jar!/com/intellij/lang/javascript/index/predefined/EcmaScript.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-9.862069">
-          <caret line="22" column="28" selection-start-line="22" selection-start-column="22" selection-end-line="22" selection-end-column="28" />
-          <folding>
-            <marker date="1458094733000" expanded="true" signature="45:54" placeholder="..." />
-          </folding>
+        <state vertical-scroll-proportion="0.0">
+          <caret line="741" column="9" selection-start-line="741" selection-start-column="9" selection-end-line="741" selection-end-column="9" />
+          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/Script/BYOI-webClient-v2.0/example/index.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-22.5">
-          <caret line="78" column="59" selection-start-line="78" selection-start-column="48" selection-end-line="78" selection-end-column="59" />
+        <state vertical-scroll-proportion="-13.169811">
+          <caret line="216" column="108" selection-start-line="216" selection-start-column="91" selection-end-line="216" selection-end-column="108" />
           <folding>
             <element signature="n#style#0;n#div#0;n#div#0;n#div#1;n#div#0;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#1;n#div#0;n#div#0;n#div#1;n#div#0;n#div#0;n#div#0;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#1;n#div#1;n#div#0;n#div#1;n#div#0;n#div#0;n#div#0;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#0;n#div#0;n#div#1;n#div#0;n#div#0;n#div#0;n#div#2;n#body#0;n#html#0;n#!!top" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/Script/BYOI-webClient-v2.0/example/js/bindings.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.4735062">
-          <caret line="211" column="33" selection-start-line="211" selection-start-column="33" selection-end-line="211" selection-end-column="33" />
+        <state vertical-scroll-proportion="0.3404735">
+          <caret line="216" column="42" selection-start-line="216" selection-start-column="42" selection-end-line="216" selection-end-column="42" />
           <folding>
-            <marker date="1458179392787" expanded="true" signature="9175:9383" placeholder="..." />
-            <marker date="1458179392787" expanded="true" signature="9680:9841" placeholder="..." />
-            <marker date="1458179392787" expanded="true" signature="9680:9913" placeholder="..." />
-            <marker date="1458179392787" expanded="true" signature="10197:10371" placeholder="..." />
-            <marker date="1458179392787" expanded="true" signature="10197:10432" placeholder="..." />
+            <marker date="1458182088352" expanded="true" signature="45:54" placeholder="..." />
+            <marker date="1458182088352" expanded="true" signature="11590:11798" placeholder="..." />
+            <marker date="1458182088352" expanded="true" signature="12095:12256" placeholder="..." />
+            <marker date="1458182088352" expanded="true" signature="12095:12328" placeholder="..." />
+            <marker date="1458182088352" expanded="true" signature="12612:12786" placeholder="..." />
+            <marker date="1458182088352" expanded="true" signature="12612:12847" placeholder="..." />
           </folding>
         </state>
       </provider>

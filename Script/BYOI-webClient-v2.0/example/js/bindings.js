@@ -1,3 +1,6 @@
+var charSplit = "<b class='charSplit' style='color:red'>|</b>";
+
+
 $(document).ready(function () {
     //bind elements of the DOM to BYOI methods
 
@@ -25,16 +28,9 @@ $(document).ready(function () {
         msg.relayMessage();
     });
 
-
-    // enable click selection of messages
-    //$(document).on('click', '.BYOI-message', function () {// bind to every BYOI message, regardless of their Message Handler
-    //    // toggle selection
-    //    $(this).toggleSelectMessage();
-    //    // set the input value to the selected message's text
-    //    $('#msg').val($(this).data('text'));
-    //});
-
     $(document).ready(function () {
+        $("#spiltMessageTextEditor").attr('contenteditable', 'true');
+        $('#spiltMessageTextEditor').keyup(updateSplitMessage);
         $("#messageBord").sortable({
             connectWith: "div",
             dropOnEmpty: true,
@@ -44,21 +40,62 @@ $(document).ready(function () {
             }
         });
         $("#messageBord").disableSelection();
-        var toJoinDarg = false;
-
+        var hasBeenDrag = false;
 
         $('#messageBord').on('mouseup', '.BYOI-message', function () {
-            var wasDrag = toJoinDarg;
-            toJoinDarg = false;
+            var wasDrag = hasBeenDrag;
+            hasBeenDrag = false;
             if (!wasDrag) {
                 $(this).toggleSelectMessage();
             }
         }).on('mousedown', '.BYOI-message', function () {
-            toJoinDarg = false;
+            hasBeenDrag = false;
         }).on('mousemove', '.BYOI-message', function () {
-            toJoinDarg = true;
+            hasBeenDrag = true;
         }).on('dblclick', '.BYOI-message', function () {
             $('#msg').val($(this).data('text'));
+        });
+
+
+        $("#toJoin").sortable({
+            connectWith: "div",
+            dropOnEmpty: true
+        });
+
+        $("#avalibleToJoin").sortable({
+            connectWith: "div",
+            dropOnEmpty: true
+        });
+
+        $("#toJoin, #avalibleToJoin").disableSelection();
+        var toJoinDarg = false;
+        $('#toJoin').on('mouseup', '.list-group-item', function () {
+            var wasDrag = toJoinDarg;
+            toJoinDarg = false;
+            if (!wasDrag) {
+                $('#avalibleToJoin').append(this);
+            }
+
+        }).on('mousedown', '.list-group-item', function () {
+            toJoinDarg = false;
+        }).on('mousemove', '.list-group-item', function () {
+            toJoinDarg = true;
+        });
+
+
+        var avalibleToJoinDarg = false;
+        $('#avalibleToJoin').on('mouseup', '.list-group-item', function () {
+            var wasDrag = avalibleToJoinDarg;
+            avalibleToJoinDarg = false;
+            if (!wasDrag) {
+                $('#toJoin').append(this);
+            }
+
+        }).on('mousedown', '.list-group-item', function () {
+            avalibleToJoinDarg = false;
+        }).on('mousemove', '.list-group-item', function () {
+            console.log("Mouse move");
+            avalibleToJoinDarg = true;
         });
 
     });
@@ -116,42 +153,6 @@ $(document).ready(function () {
         BYOI.addMessageToContainer(msg, $('#msg'));
     });
 
-    // bind move up method to the message handler
-    $('#upButton').click(function () {
-        //for each selected message in the main message handler
-        $('#messageList').getSelectedMessages().each(function () {
-            //get the index of the current element
-            var index = $(this).index();
-            // if there is some room up
-            if (index > 1) {
-                // get the previous element in the message handler
-                var previous = $('#messageList').children().eq(index - 1);
-                // if it's not selected, swap
-                if (!previous.hasClass('BYOI-selected')) {
-                    $(this).detach().insertBefore(previous);
-                }
-            }
-        });
-    });
-
-    // bind move down method to the message handler
-    $('#downButton').click(function () {
-        //for each selected message in the main message handler
-        $($('#messageList').getSelectedMessages().get().reverse()).each(function () {
-            //get the index of the current element
-            var index = $(this).index();
-            var length = $(this).parent().children().length;
-            // if there is some room down
-            if (index < length - 1) {
-                // get the previous element in the message handler
-                var next = $('#messageList').children().eq(index + 1);
-                // if it's not selected, swap
-                if (!next.hasClass('BYOI-selected')) {
-                    $(this).detach().insertAfter(next);
-                }
-            }
-        });
-    });
 
     // bind send method to the message handler
     $('#sendButton').click(function () {
@@ -179,16 +180,101 @@ $(document).ready(function () {
 
     // bind combine method to the message handler
     $('#combineButton').click(function () {
-        $('#messageList').combineMessages();
+
+        $('#toJoin').empty();
+        $('#avalibleToJoin').empty();
+
+        $('#messageBord').getAllMessages().each(function () {
+            if ($(this).hasClass('BYOI-selected')) {
+                $('#toJoin').append($(this).clone());
+            } else {
+                $('#avalibleToJoin').append($(this).clone());
+            }
+        });
+        $('#joinModal').modal('toggle');
+
         $('#messageList').getSelectedMessages().toggleSelectMessage();
     });
 
     // bind split method to the message handler
     $('#splitButton').click(function () {
-        $('<div><span class="text">' + $('#msg').val() + '</span></div>').BYOIMessage()
-            .splitMessage().relayMessage();
+        var input = $('#msg').val();
+
+        $('#spiltMessageTextEditor').html("");
+        var chars = input.split("");
+        for (var i = 0; i < chars.length; ++i) {
+            var object = "<span>" + chars[i] + "</span>";
+            $('#spiltMessageTextEditor').append(object);
+        }
+        updateSplitMessage();
+
+        $('#splitModal').modal('toggle');
+
         $('#messageList').getSelectedMessages().toggleSelectMessage();
     });
+
+    $('#split-sendButton').click(function () {
+        $('#spiltMessageTextEditor').children('.charSplit').each(function () {
+            $(this).remove();
+        });
+
+        var text = $("#spiltMessageTextEditor").text();
+        var charLenght = BYOI.config('')['MSG_MAX_LEN'];
+        var regex = new RegExp(".{1," + charLenght + "}", 'g');
+        var textChunks = text.match(regex);
+
+        for (var i = 0; i < textChunks.length; ++i) {
+            var html = '<div><span class="text">' + textChunks[i] + '</span></div>';
+            // sent message to the server
+            $(html).BYOIMessage().send($('#recipient').val());
+            $('#messageList').getSelectedMessages().toggleSelectMessage();
+        }
+        $('#msg').val('');
+        $('#splitModal').modal('toggle');
+    });
+
+
+    $('#split-closeButton').click(function () {
+        $('#spiltMessageTextEditor').children('.charSplit').each(function () {
+            $(this).remove();
+        });
+
+        var text = $("#spiltMessageTextEditor").text();
+        var charLenght = BYOI.config('')['MSG_MAX_LEN'];
+        var regex = new RegExp(".{1," + charLenght + "}", 'g');
+        var textChunks = text.match(regex);
+        $('#msg').val(text);
+    });
+
+    function updateSplitMessage(event) {
+        var maxlenght = BYOI.config('')['MSG_MAX_LEN'];
+
+        // Update to o
+        $("#spiltMessageTextEditor").contents().filter(function () {
+            return (this.innerHTML !== undefined && this.innerHTML.length > 1) || this.nodeType === 3;
+        }).each(function () {
+            if (this.nodeType === 3) {
+                var text = this.textContent;
+            } else {
+                var text = this.innerHTML;
+            }
+            var chars = text.split("");
+            var object = "";
+            for (var i = 0; i < chars.length; ++i) {
+                object += "<span>" + chars[i] + "</span>";
+            }
+            $(this).before(object);
+            $(this).remove();
+        });
+
+        $('#spiltMessageTextEditor').children('.charSplit').each(function () {
+            $(this).remove();
+        });
+
+        $('#spiltMessageTextEditor').children("span:nth-child(" + maxlenght + "n)").each(function () {
+            $(this).after(charSplit);
+        });
+    }
 
 
     // create a System Alert
@@ -266,6 +352,12 @@ $(document).ready(function () {
     checksumList = $('#messageList-checksum').BYOIMessageHandler({
         accept: function (msg) {
             return msg.hasClass('checksum');
+        }
+    });
+
+    taskList = $('#messageList-task').BYOIMessageHandler({
+        accept: function (msg) {
+            return msg.hasClass('task');
         }
     });
 });
