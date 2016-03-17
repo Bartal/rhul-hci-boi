@@ -4,6 +4,7 @@ $(document).ready(function() {
     $('#connectButton').click(function(){
         // attempt connection to the server
         BYOI.connect();
+        $('#systemMessage').text('connecting...');
     });
 
 

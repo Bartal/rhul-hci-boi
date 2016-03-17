@@ -154,6 +154,10 @@ function openSplitMessage() {
     $('#splitModal').modal('toggle');
 }
 
+function openConnect() {
+    $('#connectionModal').modal('toggle');
+}
+
 function bodyMouseHandler(event) {
     switch (event.which) {
         case 3:
