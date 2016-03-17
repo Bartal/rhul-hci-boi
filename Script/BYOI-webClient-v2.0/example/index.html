@@ -23,6 +23,11 @@
     <script src="js/bindings.js"></script>
     <!-- minimal stylesheet -->
 
+    <script src="js/wheelnav/wheelnav.js"></script>
+    <script src="js/wheelnav/raphael.icons.min.js"></script>
+    <script src="js/wheelnav/raphael.min.js"></script>
+    <script src="js/util.js"></script>
+
     <style>
         .sent,
         .broadcast,
@@ -53,6 +58,19 @@
     <script>
         $(document).ready(function () {
             $("#systemMessages").hide();
+            renderWheel();
+            var resizeTimer;
+
+            $(window).on('resize', function (e) {
+
+                clearTimeout(resizeTimer);
+                resizeTimer = setTimeout(function () {
+
+                    // Run code here, resizing has "stopped"
+                    renderWheel();
+                }, 250);
+
+            });
         });
     </script>
 </head>
@@ -91,70 +109,90 @@
             </div>
         </div><!-- #main -->
         <div class="col-xs-4" id='sidebar'>
-            <div id="connectionButtons">
-                <button
-                        type="button"
-                        id='connectButton'
-                >Connect
-                </button>
-            </div><!-- #connectionButtons -->
-            <div id="loggedInButtons">
-                <div class="form-inline">
-                    <div class="row">
-                        <button class="col-xs-12 btn btn-default form-control" type="button" id='closeButton'>Close
-                        </button>
-                    </div>
-                    <div class="row">
-                        <button class="col-xs-12 btn btn-default from-control" type="button" id='sendButton'>Send
-                            Message
-                        </button>
-                    </div>
-                    <div class="row">
-                        <button class="col-xs-12 btn btn-default from-control" type="button" id='addButton'>Add</button>
-                    </div>
-                    <div class="row">
-                        <button class="col-xs-12 btn btn-default from-control" type="button" id='combineButton'>
-                            Combine
-                        </button>
-                    </div>
-                    <div class="row">
-                        <button class="col-xs-12 btn btn-default from-control" type="button" id='splitButton'>Split
-                        </button>
-                    </div>
-                    <div class="row">
-                        <button class="col-xs-12 btn btn-default from-control" type="button" id='checksumButton'>Add
-                            Checksum
-                        </button>
-                    </div>
-                    <div class="row">
-                        <button class="col-xs-12 btn btn-default from-control" type="button" id='verifyButton'>Verify
-                            Checksum
-                        </button>
-                    </div>
-                    <div class="row">
-                        <button class="col-xs-12 btn btn-default from-control" type="button" id='encryptButton'>
-                            Encrypt
-                        </button>
-                    </div>
-                    <div class="row">
-                        <button class="col-xs-12 btn btn-default from-control" type="button" id='decryptButton'>
-                            Decrypt
-                        </button>
-                    </div>
-                    <div class="row">
-                        <button class="col-xs-12 btn btn-default from-control" type="button" id='randomButton'>Add
-                            Random Number
-                        </button>
-                    </div>
-                    <div class="row">
-                        <button class="col-xs-12 btn btn-default from-control" type="button" id='deleteButton'>Delete
-                        </button>
+            <div class="row">
+                <div id="wheelDiv" style="overflow:unset; height:100%; z-index: 1000;"
+                     data-wheelnav-wheelradius="100"
+                     data-wheelnav-navangle="90"
+                     data-wheelnav-slicepath="DonutSlice"
+                     data-wheelnav-colors="#E34C26,#F06529"
+                     data-wheelnav-rotateoff>
+                </div>
+            </div>
+            <div class="row">
+                <div id="connectionButtons">
+                    <button
+                            type="button"
+                            id='connectButton'
+                    >Connect
+                    </button>
+                </div><!-- #connectionButtons -->
+                <div id="loggedInButtons">
+                    <div class="form-inline">
+                        <div class="row">
+                            <button class="col-xs-12 btn btn-default form-control" type="button" id='closeButton'>Close
+                            </button>
+                        </div>
+                        <div class="row">
+                            <button class="col-xs-12 btn btn-default from-control" type="button" id='sendButton'>Send
+                                Message
+                            </button>
+                        </div>
+                        <div class="row">
+                            <button class="col-xs-12 btn btn-default from-control" type="button" id='addButton'>Add
+                            </button>
+                        </div>
+                        <div class="row">
+                            <button class="col-xs-12 btn btn-default from-control" type="button" id='combineButton'>
+                                Combine
+                            </button>
+                        </div>
+                        <div class="row">
+                            <button class="col-xs-12 btn btn-default from-control" type="button" id='splitButton'>Split
+                            </button>
+                        </div>
+                        <div class="row">
+                            <button class="col-xs-12 btn btn-default from-control" type="button" id='checksumButton'>Add
+                                Checksum
+                            </button>
+                        </div>
+                        <div class="row">
+                            <button class="col-xs-12 btn btn-default from-control" type="button" id='verifyButton'>
+                                Verify
+                                Checksum
+                            </button>
+                        </div>
+                        <div class="row">
+                            <button class="col-xs-12 btn btn-default from-control" type="button" id='encryptButton'>
+                                Encrypt
+                            </button>
+                        </div>
+                        <div class="row">
+                            <button class="col-xs-12 btn btn-default from-control" type="button" id='decryptButton'>
+                                Decrypt
+                            </button>
+                        </div>
+                        <div class="row">
+                            <button class="col-xs-12 btn btn-default from-control" type="button" id='randomButton'>Add
+                                Random Number
+                            </button>
+                        </div>
+                        <div class="row">
+                            <button class="col-xs-12 btn btn-default from-control" type="button" id='deleteButton'>
+                                Delete
+                            </button>
+                        </div>
                     </div>
                 </div>
             </div><!-- #loggedInButtons -->
         </div><!-- #sidebar -->
-    </div><!-- #container -->
-</div>
+    </div>
+    <div class="row">
+        <div class="col-xs-12">
+
+        </div>
+    </div>
+
+</div><!-- #container -->
 
 
 <div class="modal fade" tabindex="-1" id="joinModal" role="dialog" aria-labelledby="gridSystemModalLabel">
