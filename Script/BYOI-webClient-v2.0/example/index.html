@@ -55,6 +55,16 @@
         .list-group-item-heading {
             word-wrap: break-word;
         }
+
+        #messageBord {
+            max-height: 60vh;
+            min-height: 40vh;
+            overflow-y: scroll;
+        }
+
+        .input-lg, .btn-lg {
+            height: 60px;
+        }
     </style>
     <script>
         $(document).ready(function () {
@@ -73,20 +83,33 @@
 
             });
             $("#wheelDiv").hide();
+            var placeholder = 'Resipitan.\n(0 for broadcast)';
+            $('#recipient').attr('placeholder', placeholder);
+
         });
     </script>
 </head>
 <body>
-<div id='container' class="container">
+<div id='container' class="container-fluid">
+    <div class="row">
+        <div class="col-sm-12">
+            <div style="font-size: 200%;" class="well well-lg">
+                <div class="text-center">Build you own internet
+                </div>
+            </div>
+        </div>
+    </div>
     <div class="row">
         <div id="main" class="col-xs-8">
             <div class="row">
                 <div class="col-xs-12">
-                    <div id="task" class="jumbotron">
-                        Task her
+                    <div class="jumbotron" style="font-size: 160%;">
+                        <div class="" id="task">
+                            Task her
+                        </div>
                     </div>
 
-                    <div class="alert alert-warning" id="systemMessages">
+                    <div class="alert alert-warning" id="systemMessages" style="font-size: 120%">
                         <button type="button" class="close" data-dismiss="alert">x</button>
                         <div id="systemMessage">
 
@@ -96,21 +119,35 @@
             </div>
             <div class="row">
                 <div class="col-xs-12">
-                    <div class="list-group" id="messageBord" style="max-height: 60vh; overflow-y:scroll;">
-
+                    <div class="list-group" id="messageBord">
                     </div>
                 </div>
             </div>
             <div class="form-group" id="msgBox">
-                <label for="msg">Message to send:</label>
-                <input type="text" class="form-control" id="msg">
-            </div>
-            <div class="form-group" id="recipientBox">
-                <label for="recipient">Resipitan</label>
-                <input type="number" class="form-control" id="recipient">
+                <div class="form-group">
+                    <div class="col-sm-6">
+                        <input type="text" class="form-control input-lg" id="msg" placeholder="Message to send">
+                    </div>
+                    <div class="col-sm-3">
+                        <input type="number" class="form-control input-lg" id="recipient" value="">
+                    </div>
+                </div>
+                <button class="col-sm-3 btn btn-lg btn-default from-control" type="button" id='sendButton'>Send
+                    Message
+                </button>
             </div>
         </div><!-- #main -->
         <div class="col-xs-4" id='sidebar'>
+            <div id="loggedInButtons" style="margin-top: 10px;">
+                <div class="row">
+                    <button class="col-xs-12 btn btn-default form-control" type="button" id='closeButton'>Close</button>
+                </div>
+                <div class="row">
+                    <button class="col-xs-12 btn btn-default from-control" type="button" id='splitButton'>Split
+                    </button>
+                </div>
+            </div>
+
             <div class="row">
                 <div id="wheelDiv" style="overflow:unset; height:100%; z-index: 1000;"
                      data-wheelnav-wheelradius="100"
@@ -128,70 +165,8 @@
                     >Connect
                     </button>
                 </div><!-- #connectionButtons -->
-                <div id="loggedInButtons">
-                    <div class="form-inline">
-                        <div class="row">
-                            <button class="col-xs-12 btn btn-default form-control" type="button" id='closeButton'>Close
-                            </button>
-                        </div>
-                        <div class="row">
-                            <button class="col-xs-12 btn btn-default from-control" type="button" id='sendButton'>Send
-                                Message
-                            </button>
-                        </div>
-                        <div class="row">
-                            <button class="col-xs-12 btn btn-default from-control" type="button" id='addButton'>Add
-                            </button>
-                        </div>
-                        <div class="row">
-                            <button class="col-xs-12 btn btn-default from-control" type="button" id='combineButton'>
-                                Combine
-                            </button>
-                        </div>
-                        <div class="row">
-                            <button class="col-xs-12 btn btn-default from-control" type="button" id='splitButton'>Split
-                            </button>
-                        </div>
-                        <div class="row">
-                            <button class="col-xs-12 btn btn-default from-control" type="button" id='checksumButton'>Add
-                                Checksum
-                            </button>
-                        </div>
-                        <div class="row">
-                            <button class="col-xs-12 btn btn-default from-control" type="button" id='verifyButton'>
-                                Verify
-                                Checksum
-                            </button>
-                        </div>
-                        <div class="row">
-                            <button class="col-xs-12 btn btn-default from-control" type="button" id='encryptButton'>
-                                Encrypt
-                            </button>
-                        </div>
-                        <div class="row">
-                            <button class="col-xs-12 btn btn-default from-control" type="button" id='decryptButton'>
-                                Decrypt
-                            </button>
-                        </div>
-                        <div class="row">
-                            <button class="col-xs-12 btn btn-default from-control" type="button" id='randomButton'>Add
-                                Random Number
-                            </button>
-                        </div>
-                        <div class="row">
-                            <button class="col-xs-12 btn btn-default from-control" type="button" id='deleteButton'>
-                                Delete
-                            </button>
-                        </div>
-                    </div>
-                </div>
             </div><!-- #loggedInButtons -->
         </div><!-- #sidebar -->
-    </div>
-    <div class="row">
-        <div class="col-xs-12">
-
-        </div>
     </div>
 
 </div><!-- #container -->
@@ -282,7 +257,7 @@
         Messages sent and received
     </strong>
 </div>
-<div id="messageList-combined">
+<div id="messageList-combined" hidden>
 
 </div>
 </body>

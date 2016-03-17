@@ -1,5 +1,50 @@
 var charSplit = "<b class='charSplit' style='color:red'>|</b>";
 
+function updateSplitMessage(event) {
+    var maxlenght = BYOI.config('')['MSG_MAX_LEN'];
+
+    // Update to o
+    $("#spiltMessageTextEditor").contents().filter(function () {
+        return (this.innerHTML !== undefined && this.innerHTML.length > 1) || this.nodeType === 3;
+    }).each(function () {
+        if (this.nodeType === 3) {
+            var text = this.textContent;
+        } else {
+            var text = this.innerHTML;
+        }
+        var chars = text.split("");
+        var object = "";
+        for (var i = 0; i < chars.length; ++i) {
+            object += "<span>" + chars[i] + "</span>";
+        }
+        $(this).before(object);
+        $(this).remove();
+    });
+
+    $('#spiltMessageTextEditor').children('.charSplit').each(function () {
+        $(this).remove();
+    });
+
+    $('#spiltMessageTextEditor').children("span:nth-child(" + maxlenght + "n)").each(function () {
+        $(this).after(charSplit);
+    });
+}
+
+function openSplitModal() {
+    var input = $('#msg').val();
+
+    $('#spiltMessageTextEditor').html("");
+    var chars = input.split("");
+    for (var i = 0; i < chars.length; ++i) {
+        var object = "<span>" + chars[i] + "</span>";
+        $('#spiltMessageTextEditor').append(object);
+    }
+    updateSplitMessage();
+
+    $('#splitModal').modal('toggle');
+
+    $('#messageList').getSelectedMessages().toggleSelectMessage();
+}
 
 $(document).ready(function () {
     //bind elements of the DOM to BYOI methods
@@ -162,11 +207,15 @@ $(document).ready(function () {
         // also, notice that because of this, the message is not inserted with
         // all the html tags provided, but only those that were inside the
         // tag with the "text" class.
-        var html = '<div><span class="text">' + $('#msg').val() + '</span></div>';
-        // sent message to the server
-        $(html).BYOIMessage().send($('#recipient').val());
-        $('#messageList').getSelectedMessages().toggleSelectMessage();
 
+        if ($('#sendButton').hasClass('send')) {
+            var html = '<div><span class="text">' + $('#msg').val() + '</span></div>';
+            // sent message to the server
+            $(html).BYOIMessage().send($('#recipient').val());
+            $('#messageList').getSelectedMessages().toggleSelectMessage();
+        } else {
+            openSplitModal();
+        }
     });
 
 
@@ -209,19 +258,7 @@ $(document).ready(function () {
 
 // bind split method to the message handler
     $('#splitButton').click(function () {
-        var input = $('#msg').val();
-
-        $('#spiltMessageTextEditor').html("");
-        var chars = input.split("");
-        for (var i = 0; i < chars.length; ++i) {
-            var object = "<span>" + chars[i] + "</span>";
-            $('#spiltMessageTextEditor').append(object);
-        }
-        updateSplitMessage();
-
-        $('#splitModal').modal('toggle');
-
-        $('#messageList').getSelectedMessages().toggleSelectMessage();
+        openSplitModal();
     });
 
     $('#split-sendButton').click(function () {
@@ -257,36 +294,6 @@ $(document).ready(function () {
         $('#msg').val(text);
     });
 
-    function updateSplitMessage(event) {
-        var maxlenght = BYOI.config('')['MSG_MAX_LEN'];
-
-        // Update to o
-        $("#spiltMessageTextEditor").contents().filter(function () {
-            return (this.innerHTML !== undefined && this.innerHTML.length > 1) || this.nodeType === 3;
-        }).each(function () {
-            if (this.nodeType === 3) {
-                var text = this.textContent;
-            } else {
-                var text = this.innerHTML;
-            }
-            var chars = text.split("");
-            var object = "";
-            for (var i = 0; i < chars.length; ++i) {
-                object += "<span>" + chars[i] + "</span>";
-            }
-            $(this).before(object);
-            $(this).remove();
-        });
-
-        $('#spiltMessageTextEditor').children('.charSplit').each(function () {
-            $(this).remove();
-        });
-
-        $('#spiltMessageTextEditor').children("span:nth-child(" + maxlenght + "n)").each(function () {
-            $(this).after(charSplit);
-        });
-    }
-
 
 // create a System Alert
 //$('#systemMessage').BYOISystemAlert();
@@ -320,7 +327,7 @@ $(document).ready(function () {
                 if (msg.data('to') == 0) {
                     footer = "Bordcast messge";
                 } else {
-                    footer = "send to " + msg.data('to')
+                    footer = "send message to : " + msg.data('to')
                 }
                 var dataCopy = $(msg).data();
                 var newMessage = "  <a href=\"#\" class=\"list-group-item\">"
@@ -333,9 +340,21 @@ $(document).ready(function () {
                 return true;
             } else if (msg.hasClass('received')) {
                 var dataCopy = $(msg).data();
-                var newMessage = "  <a href=\"#\" class=\"list-group-item received\">"
-                    + "    <h4 class=\"list-group-item-heading text\">" + msg.data('text') + "</h4>"
-                    + "    <p class=\"list-group-item-text connected\">" + msg.data('node') + "</p>"
+
+                var footer = "";
+                var text = "";
+
+                if (msg.data('from') == undefined) {
+                    footer = "You node number is : " + msg.data('node');
+                    text = "You name is : " + msg.data('text');
+                } else {
+                    footer = "Received message from : " + msg.data('from');
+                    text = msg.data('text');
+                }
+
+                var newMessage = "  <a href=\"#\" class=\"list-group-item received text-right\">"
+                    + "    <h4 class=\"list-group-item-heading text\">" + text + "</h4>"
+                    + "    <p class=\"list-group-item-text connected\">" + footer + "</p>"
                     + "  </a> ";
                 msg.html(newMessage);
                 msg.addMetadata(dataCopy);
@@ -381,12 +400,37 @@ $(document).ready(function () {
         }
     });
 
-
-    $('#messageBord').on('click', '.BYOI-message', function () {
+    function updateEncryptButton() {
         if ($('#messageBord').getSelectedMessages().length > 0) {
             $(encryptionTspan).text('Decrypt');
         } else {
             $(encryptionTspan).text('Encrypt');
         }
+    }
+
+    $('#messageBord').on('click', '.BYOI-message', function () {
+        updateEncryptButton();
     });
+
+    $('#msg').keydown(function () {
+        updateEncryptButton();
+
+        var charLenght = $('#msg').val().length;
+        var maxCharLenght = BYOI.config('')['MSG_MAX_LEN'];
+
+
+        if (charLenght > maxCharLenght) {
+            if ($('#sendButton').hasClass('send')) {
+                $('#sendButton').removeClass('send');
+                $('#sendButton').text('Split message');
+            }
+        } else {
+            if (!$('#sendButton').hasClass('send')) {
+                $('#sendButton').addClass('send');
+                $('#sendButton').text('Send message');
+            }
+        }
+
+
+    })
 });
