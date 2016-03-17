@@ -91,10 +91,3 @@ function addCallbackFunction() {
     };
 }
 
-function toggleEncrytionText() {
-    if ($(encryptionTspan).text() == "Encrypt") {
-        $(encryptionTspan).text('Decrypt')
-    } else {
-        $(encryptionTspan).text('Encrypt')
-    }
-}

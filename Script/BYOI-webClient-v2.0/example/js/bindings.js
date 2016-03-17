@@ -432,5 +432,10 @@ $(document).ready(function () {
         }
 
 
+        if (charLenght > maxCharLenght) {
+            $('#lengthWarning').text("Maximum message length reached - please split message")
+        } else {
+            $('#lengthWarning').text((maxCharLenght- charLenght)+ " characters remaining")
+        }
     })
 });
