@@ -157,8 +157,6 @@
 </div>
 
 
-
-
 <div class="modal fade" tabindex="-1" id="joinModal" role="dialog" aria-labelledby="gridSystemModalLabel">
     <div class="container">
         <div class="modal-dialog" role="document">
@@ -186,7 +184,7 @@
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                    <button type="button" class="btn btn-primary">Save changes</button>
+                    <button type="button" class="btn btn-primary" id="join-save">Save changes</button>
                 </div>
             </div><!-- /.modal-content -->
         </div><!-- /.modal-dialog -->
@@ -214,14 +212,14 @@
                     <input type="hidden" name="messageSplitSend"/>
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-default" data-dismiss="modal" id="split-closeButton">Close</button>
+                    <button type="button" class="btn btn-default" data-dismiss="modal" id="split-closeButton">Close
+                    </button>
                     <button type="button" class="btn btn-primary" id="split-sendButton">Send messages</button>
                 </div>
             </div><!-- /.modal-content -->
         </div><!-- /.modal-dialog -->
     </div>
 </div><!-- /.modal -->
-
 
 
 <div id="messageList" hidden>
@@ -243,6 +241,9 @@
     <strong>
         Messages sent and received
     </strong>
+</div>
+<div id="messageList-combined">
+
 </div>
 </body>
 </html>

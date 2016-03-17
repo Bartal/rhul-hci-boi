@@ -94,7 +94,6 @@ $(document).ready(function () {
         }).on('mousedown', '.list-group-item', function () {
             avalibleToJoinDarg = false;
         }).on('mousemove', '.list-group-item', function () {
-            console.log("Mouse move");
             avalibleToJoinDarg = true;
         });
 
@@ -191,6 +190,19 @@ $(document).ready(function () {
                 $('#avalibleToJoin').append($(this).clone());
             }
         });
+        $('#joinModal').modal('toggle');
+
+        $('#messageList').getSelectedMessages().toggleSelectMessage();
+    });
+
+    $('#join-save').click(function () {
+        var result = "";
+        $('#toJoin').children('.BYOI-message').each(function () {
+            result += $(this).find('.text').text();
+        });
+        var msg = $('<div class="combined"><span class="text">' + result + '</span>&nbsp;</div>').BYOIMessage();
+        msg.relayMessage();
+
         $('#joinModal').modal('toggle');
 
         $('#messageList').getSelectedMessages().toggleSelectMessage();
@@ -313,7 +325,7 @@ $(document).ready(function () {
                 }
                 var dataCopy = $(msg).data();
                 var newMessage = "  <a href=\"#\" class=\"list-group-item\">"
-                    + "    <h4 class=\"list-group-item-heading\">" + msg.data('text') + "</h4>"
+                    + "    <h4 class=\"list-group-item-heading text\">" + msg.data('text') + "</h4>"
                     + "    <p class=\"list-group-item-text\">" + footer + "</p>"
                     + "  </a> ";
                 msg.html(newMessage);
@@ -334,6 +346,15 @@ $(document).ready(function () {
                 var newMessage = "  <a href=\"#\" class=\"list-group-item\">"
                     + "    <h4 class=\"list-group-item-heading text\">" + msg.data('text') + "</h4>"
                     + "    <p class=\"list-group-item-text connected\">" + "self add message" + "</p>"
+                    + "  </a> ";
+                msg.html(newMessage);
+                msg.addMetadata(dataCopy);
+                return true;
+            } else if (msg.hasClass('combined')) {
+                var dataCopy = $(msg).data();
+                var newMessage = "  <a href=\"#\" class=\"list-group-item\">"
+                    + "    <h4 class=\"list-group-item-heading text\">" + msg.data('text') + "</h4>"
+                    + "    <p class=\"list-group-item-text connected\">" + "Message combine" + "</p>"
                     + "  </a> ";
                 msg.html(newMessage);
                 msg.addMetadata(dataCopy);
