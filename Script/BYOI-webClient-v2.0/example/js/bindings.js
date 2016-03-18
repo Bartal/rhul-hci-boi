@@ -221,6 +221,7 @@ $(document).ready(function () {
 
 // bind close connection method to the message handler
     $('#closeButton').click(function () {
+        console.log("Close button");
         BYOI.connection.close();
     });
 
@@ -402,9 +403,9 @@ $(document).ready(function () {
 
     function updateEncryptButton() {
         if ($('#messageBord').getSelectedMessages().length > 0) {
-            $(encryptionTspan).text('Decrypt');
+            $("#wheelnav-wheelDiv-title-5 > tspan:nth-child(1)").text('Decrypt');
         } else {
-            $(encryptionTspan).text('Encrypt');
+            $("#wheelnav-wheelDiv-title-5 > tspan:nth-child(1)").text('Encrypt');
         }
     }
 

@@ -6,7 +6,7 @@ function renderWheel() {
 
     wheel.slicePathFunction = slicePath().LineSlice;
     wheel.markerEnable = true;
-    wheel.initWheel(["Delete\nMessage", "Add\nChecksum", "Join\n Messages", "verify\nchecksum", "Add\n Random\nNumber", "Decrypt\nMessage"]);
+    wheel.initWheel(["Delete\nMessage", "Add\nChecksum", "Join\n Messages", "verify\nchecksum", "Add\n Random\nNumber", "Encrypt\nMessage"]);
 
     wheel.clockwise = false;
     wheel.clickModeRotate = false;
@@ -70,7 +70,7 @@ function addCallbackFunction() {
     };
 
     wheel.navItems[5].navigateFunction = function () {
-        if ($(encryptionTspan).text() == "Encrypt") {
+        if ($("#wheelnav-wheelDiv-title-5 > tspan:nth-child(1)").text() == "Encrypt") {
 
             var msg = $('<div><span class="text">' + $('#msg').val() + '</span></div>').BYOIMessage().encryptMessage(
                 parseInt(+$('#recipient').val()) // encryption key is the recipient node
